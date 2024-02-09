@@ -11,7 +11,7 @@ import SwiftUI
 struct BitsoArtGalleryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ArtworkListView(viewModel: ArtworkListViewModel())
         }
     }
 }

@@ -7,16 +7,13 @@
 
 import Foundation
 
-struct Artwork {
+struct Artwork: Identifiable {
     let id: Int
     let title: String
-    let description: String
-    let dimensions: String
-    let mediumDisplay: String
     let artistTitle: String
     let departmentTitle: String
     let imageId: String
-    let thumbnai: Thumbnail
+    let thumbnail: Thumbnail?
 }
 
 struct Thumbnail {
