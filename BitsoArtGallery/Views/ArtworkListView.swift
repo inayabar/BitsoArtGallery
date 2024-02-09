@@ -61,6 +61,6 @@ struct ArtworkListView: View {
 }
 
 #Preview {
-    let viewModel = ArtworkListViewModel(networkManager: NetworkManager())
+    let viewModel = ArtworkListViewModel(networkManager: ArtworkService())
     return ArtworkListView(viewModel: viewModel)
 }

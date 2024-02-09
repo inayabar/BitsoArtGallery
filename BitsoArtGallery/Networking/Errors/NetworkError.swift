@@ -11,4 +11,6 @@ public enum NetworkError: Error {
     case httpError(statusCode: Int)
     case decodingError(Error)
     case invalidUrlError
+    case notConnectedToInternet
+    case unknown(error: Error?)
 }

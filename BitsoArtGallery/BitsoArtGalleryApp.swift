@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct BitsoArtGalleryApp: App {
-    let networkManager = NetworkManager()
+    let networkManager = ArtworkService()
     
     var body: some Scene {
         WindowGroup {

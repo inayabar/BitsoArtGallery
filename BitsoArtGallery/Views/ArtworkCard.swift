@@ -12,9 +12,9 @@ struct ArtworkCard: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            if let imageId = artwork.imageId {
+            if let imageId = artwork.imageId, let imageUrl = APIs.Artic.getImage(id: imageId).url{
                 AsyncImage(
-                    url: URL(string: "https://www.artic.edu/iiif/2/\(imageId)/full/843,/0/default.jpg"),
+                    url: imageUrl,
                     content: { image in
                         image.resizable()
                             .aspectRatio(contentMode: .fit)
