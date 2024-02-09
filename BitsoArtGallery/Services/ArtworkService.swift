@@ -11,7 +11,7 @@ class ArtworkService {
     let networkingService: NetworkService = NetworkService()
     
     func fetchArtworks(page: Int) async throws -> ArtworkList {
-        guard let url = APIs.Artic.getArtworks(page: 1).url else {
+        guard let url = APIs.Artic.getArtworks(page: page).url else {
             throw NetworkError.invalidUrlError
         }
         
