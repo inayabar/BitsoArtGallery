@@ -13,55 +13,51 @@ public enum PagingState {
     case error(error: Error)
 }
 
+@MainActor
 class ArtworkListViewModel: ObservableObject {
+    private let networkManager: NetworkManager
     private let itemsFromEndThreshold = 3
-    
-    private var totalArtworks: Int? = 40 // TODO: Should be optional?
+    private var totalArtworks: Int = 0
     private var page = 0
-    
-    //private let networkService: NetworkService = NetworkService()
     
     @Published var artworks: [Artwork] = []
     @Published var isLoading = false
     @Published var pagingState: PagingState = .idle
     
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+    }
+    
     private var moreArtworksRemaining: Bool {
-        return artworks.count < (totalArtworks ?? 0)
+        return artworks.count < totalArtworks
     }
     
-    func loadInitialArtworks() {
+    func loadInitialArtworks() async throws {
         pagingState = .loading
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            (1...10).forEach({
-                self.artworks.append(Artwork(id: $0, title: "Starry night and the \($0)", artistTitle: "Alma Thomas", departmentTitle: "Contemporary", imageId: "e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9", thumbnail: nil))
-            })
-            self.pagingState = .idle
-        }
+        let response = try await networkManager.fetchArtworks(page: page)
+        self.artworks = response.data
+        self.totalArtworks = response.pagination.total
+        self.page += 1
+        self.pagingState = .idle
     }
     
-    func requestMoreItemsIfNeeded(for index: Int) {
+    func requestMoreItemsIfNeeded(for index: Int) async throws {
         if scrollingThresholdMet(at: index) && moreArtworksRemaining {
             page += 1
             
             print("fetching page \(page)")
             self.pagingState = .loading
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                (self.artworks.count+1...self.artworks.count+10).forEach({
-                    self.artworks.append(Artwork(id: $0, title: "Starry night and the \($0)", artistTitle: "Alma Thomas", departmentTitle: "Contemporary", imageId: "", thumbnail: nil))
-                })
-                self.pagingState = .idle
-                print("finished fetching page \(page)")
-            }
+            let response = try await networkManager.fetchArtworks(page: page)
+            self.artworks += response.data
+            self.totalArtworks = response.pagination.total
+            self.page += 1
+            self.pagingState = .idle
         }
     }
     
-    func refresh() {
+    func refresh() async {
         artworks = []
-        loadInitialArtworks()
+        try! await loadInitialArtworks()
     }
     
     private func scrollingThresholdMet(at index: Int) -> Bool {

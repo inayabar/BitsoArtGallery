@@ -16,19 +16,27 @@ struct ArtworkListView: View {
                 ForEach(viewModel.artworks.enumerated().map({$0}), id: \.element.id) { index, artwork in
                     ArtworkCard(artwork: artwork)
                         .listRowSeparator(.hidden)
-                        .onAppear { viewModel.requestMoreItemsIfNeeded(for: index) }
+                        .onAppear {
+                            Task {
+                               try! await viewModel.requestMoreItemsIfNeeded(for: index)
+                            }
+                        }
                 }
                 lastRowView
             }
             .listStyle(.plain)
             .padding()
             .refreshable {
-                viewModel.refresh()
+                Task {
+                    await viewModel.refresh()
+                }
             }
             .navigationTitle("Artworks")
         }
         .onAppear {
-            viewModel.loadInitialArtworks()
+            Task {
+                try! await viewModel.loadInitialArtworks()
+            }
         }
     }
     
@@ -44,7 +52,7 @@ struct ArtworkListView: View {
                 .listRowSeparator(.hidden)
             case .idle:
                 EmptyView()
-            case .error(let _):
+            case .error(_):
                 EmptyView()
             }
         }
@@ -53,6 +61,6 @@ struct ArtworkListView: View {
 }
 
 #Preview {
-    let viewModel = ArtworkListViewModel()
+    let viewModel = ArtworkListViewModel(networkManager: NetworkManager())
     return ArtworkListView(viewModel: viewModel)
 }

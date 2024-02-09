@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct BitsoArtGalleryApp: App {
+    let networkManager = NetworkManager()
+    
     var body: some Scene {
         WindowGroup {
-            ArtworkListView(viewModel: ArtworkListViewModel())
+            ArtworkListView(viewModel: ArtworkListViewModel(networkManager: networkManager))
         }
     }
 }
