@@ -17,10 +17,11 @@ struct ArtworkCard: View {
                 content: { image in
                     image.resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 200, maxHeight: 200)
+                        .frame(maxWidth: 120, maxHeight: 120)
                 },
                 placeholder: {
                     ProgressView()
+                        .frame(width: 120, height: 120)
                 }
             )
             

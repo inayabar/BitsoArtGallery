@@ -33,7 +33,7 @@ class ArtworkListViewModel: ObservableObject {
         pagingState = .loading
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             (1...10).forEach({
-                self.artworks.append(Artwork(id: $0, title: "Starry night and the \($0)", artistTitle: "Alma Thomas", departmentTitle: "Contemporary", imageId: "", thumbnail: nil))
+                self.artworks.append(Artwork(id: $0, title: "Starry night and the \($0)", artistTitle: "Alma Thomas", departmentTitle: "Contemporary", imageId: "e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9", thumbnail: nil))
             })
             self.pagingState = .idle
         }

@@ -14,12 +14,7 @@ struct ArtworkListView: View {
         NavigationView {
             List() {
                 ForEach(viewModel.artworks.enumerated().map({$0}), id: \.element.id) { index, artwork in
-                    Text("\(artwork.title)")
-                        .frame(maxWidth: .infinity, minHeight: 150)
-                        .background(.blue)
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-                        .font(.title)
+                    ArtworkCard(artwork: artwork)
                         .listRowSeparator(.hidden)
                         .onAppear { viewModel.requestMoreItemsIfNeeded(for: index) }
                 }
