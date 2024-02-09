@@ -12,17 +12,20 @@ struct ArtworkListView: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.items.enumerated().map({$0}), id: \.element.id) { index, artwork in
-                Text("\(artwork.title)")
-                                        .frame(minWidth: 200, minHeight: 150)
-                                        .background(.blue)
-                                        .cornerRadius(10)
-                                        .foregroundColor(.white)
-                                        .font(.title)
-                                        .onAppear { viewModel.requestMoreItemsIfNeeded(for: index) }
+            List() {
+                ForEach(viewModel.artworks.enumerated().map({$0}), id: \.element.id) { index, artwork in
+                    Text("\(artwork.title)")
+                        .frame(maxWidth: .infinity, minHeight: 150)
+                        .background(.blue)
+                        .cornerRadius(10)
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .listRowSeparator(.hidden)
+                        .onAppear { viewModel.requestMoreItemsIfNeeded(for: index) }
+                }
+                lastRowView
             }
             .listStyle(.plain)
-            .listRowSeparator(.hidden)
             .padding()
             .refreshable {
                 viewModel.refresh()
@@ -30,8 +33,27 @@ struct ArtworkListView: View {
             .navigationTitle("Artworks")
         }
         .onAppear {
-            viewModel.loadInitialItems()
+            viewModel.loadInitialArtworks()
         }
+    }
+    
+    var lastRowView: some View {
+        ZStack(alignment: .center) {
+            switch viewModel.pagingState {
+            case .loading:
+                HStack {
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
+                .listRowSeparator(.hidden)
+            case .idle:
+                EmptyView()
+            case .error(let _):
+                EmptyView()
+            }
+        }
+        .frame(height: 50)
     }
 }
 

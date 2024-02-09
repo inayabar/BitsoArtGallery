@@ -7,67 +7,64 @@
 
 import Foundation
 
+public enum PagingState {
+    case idle
+    case loading
+    case error(error: Error)
+}
+
 class ArtworkListViewModel: ObservableObject {
-    private let itemsFromEndThreshold = 8
+    private let itemsFromEndThreshold = 3
     
-    private var totalItemsAvailable: Int? = 40 // TODO: Should be optional?
-    private var itemsLoadedCount: Int? = 0
+    private var totalArtworks: Int? = 40 // TODO: Should be optional?
     private var page = 0
     
     //private let networkService: NetworkService = NetworkService()
     
-    @Published var items: [Artwork] = []
-    @Published var dataIsLoading = false
+    @Published var artworks: [Artwork] = []
+    @Published var isLoading = false
+    @Published var pagingState: PagingState = .idle
     
-    func loadInitialItems() {
-        (1...10).forEach({
-            self.items.append(Artwork(id: $0, title: "Starry night and the \($0)", artistTitle: "Alma Thomas", departmentTitle: "Contemporary", imageId: "", thumbnail: nil))
-        })
-        
-        self.itemsLoadedCount? += 10
-        print("Loaded 10 items")
+    private var moreArtworksRemaining: Bool {
+        return artworks.count < (totalArtworks ?? 0)
+    }
+    
+    func loadInitialArtworks() {
+        pagingState = .loading
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            (1...10).forEach({
+                self.artworks.append(Artwork(id: $0, title: "Starry night and the \($0)", artistTitle: "Alma Thomas", departmentTitle: "Contemporary", imageId: "", thumbnail: nil))
+            })
+            self.pagingState = .idle
+        }
     }
     
     func requestMoreItemsIfNeeded(for index: Int) {
-        guard let itemsLoadedCount = itemsLoadedCount,
-              let totalItemsAvailable = totalItemsAvailable else {
-            return
-        }
-        
-        if scrollingThresholdMet(itemsLoadedCount, index) &&
-            moreItemsRemaining(itemsLoadedCount, totalItemsAvailable) {
-            print("Requesting more pages for index \(index)")
-            // Request next page
+        if scrollingThresholdMet(at: index) && moreArtworksRemaining {
             page += 1
             
-            (items.count...items.count+10).forEach({
-                self.items.append(Artwork(id: $0, title: "Starry night and the \($0)", artistTitle: "Alma Thomas", departmentTitle: "Contemporary", imageId: "", thumbnail: nil))
-            })
-            self.itemsLoadedCount? += 10
-            print("Loading next page") // TODO: Remove
+            print("fetching page \(page)")
+            self.pagingState = .loading
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                (self.artworks.count+1...self.artworks.count+10).forEach({
+                    self.artworks.append(Artwork(id: $0, title: "Starry night and the \($0)", artistTitle: "Alma Thomas", departmentTitle: "Contemporary", imageId: "", thumbnail: nil))
+                })
+                self.pagingState = .idle
+                print("finished fetching page \(page)")
+            }
         }
     }
     
     func refresh() {
-        items = []
-        itemsLoadedCount = 0
-        loadInitialItems()
+        artworks = []
+        loadInitialArtworks()
     }
     
-    func moreItemsRemaining() -> Bool {
-        guard let itemsLoadedCount, let totalItemsAvailable else {
-            return false
-        }
-        
-        return itemsLoadedCount < totalItemsAvailable
+    private func scrollingThresholdMet(at index: Int) -> Bool {
+        return (artworks.count - index) == itemsFromEndThreshold
     }
-    
-    private func scrollingThresholdMet(_ itemsLoadedCount: Int, _ index: Int) -> Bool {
-        return (itemsLoadedCount - index) == itemsFromEndThreshold
-    }
-    
-    private func moreItemsRemaining(_ itemsLoadedCount: Int, _ totalItemsAvailable: Int) -> Bool {
-        return itemsLoadedCount < totalItemsAvailable
-    }
-    
 }
