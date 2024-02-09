@@ -14,6 +14,11 @@
 		2C327D2F2B752D5900F1F2B0 /* BitsoArtGalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D2E2B752D5900F1F2B0 /* BitsoArtGalleryTests.swift */; };
 		2C327D392B752D5900F1F2B0 /* BitsoArtGalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D382B752D5900F1F2B0 /* BitsoArtGalleryUITests.swift */; };
 		2C327D3B2B752D5900F1F2B0 /* BitsoArtGalleryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D3A2B752D5900F1F2B0 /* BitsoArtGalleryUITestsLaunchTests.swift */; };
+		2C327D492B75360100F1F2B0 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D482B75360100F1F2B0 /* Artwork.swift */; };
+		2C327D4C2B75370F00F1F2B0 /* ArtworkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D4B2B75370F00F1F2B0 /* ArtworkListView.swift */; };
+		2C327D4E2B755CFE00F1F2B0 /* ArtworkCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D4D2B755CFD00F1F2B0 /* ArtworkCard.swift */; };
+		2C327D512B75635800F1F2B0 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D502B75635800F1F2B0 /* NetworkingManager.swift */; };
+		2C327D542B75660B00F1F2B0 /* ArtworkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D532B75660B00F1F2B0 /* ArtworkListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		2C327D342B752D5900F1F2B0 /* BitsoArtGalleryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitsoArtGalleryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C327D382B752D5900F1F2B0 /* BitsoArtGalleryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitsoArtGalleryUITests.swift; sourceTree = "<group>"; };
 		2C327D3A2B752D5900F1F2B0 /* BitsoArtGalleryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitsoArtGalleryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2C327D482B75360100F1F2B0 /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
+		2C327D4B2B75370F00F1F2B0 /* ArtworkListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkListView.swift; sourceTree = "<group>"; };
+		2C327D4D2B755CFD00F1F2B0 /* ArtworkCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCard.swift; sourceTree = "<group>"; };
+		2C327D502B75635800F1F2B0 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		2C327D532B75660B00F1F2B0 /* ArtworkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +104,10 @@
 		2C327D1C2B752D5700F1F2B0 /* BitsoArtGallery */ = {
 			isa = PBXGroup;
 			children = (
+				2C327D522B7565FD00F1F2B0 /* ViewModels */,
+				2C327D4F2B75634C00F1F2B0 /* Networking */,
+				2C327D4A2B7536FA00F1F2B0 /* Views */,
+				2C327D472B7535F300F1F2B0 /* Models */,
 				2C327D1D2B752D5700F1F2B0 /* BitsoArtGalleryApp.swift */,
 				2C327D1F2B752D5700F1F2B0 /* ContentView.swift */,
 				2C327D212B752D5900F1F2B0 /* Assets.xcassets */,
@@ -125,6 +139,39 @@
 				2C327D3A2B752D5900F1F2B0 /* BitsoArtGalleryUITestsLaunchTests.swift */,
 			);
 			path = BitsoArtGalleryUITests;
+			sourceTree = "<group>";
+		};
+		2C327D472B7535F300F1F2B0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2C327D482B75360100F1F2B0 /* Artwork.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2C327D4A2B7536FA00F1F2B0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C327D4B2B75370F00F1F2B0 /* ArtworkListView.swift */,
+				2C327D4D2B755CFD00F1F2B0 /* ArtworkCard.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2C327D4F2B75634C00F1F2B0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				2C327D502B75635800F1F2B0 /* NetworkingManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		2C327D522B7565FD00F1F2B0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2C327D532B75660B00F1F2B0 /* ArtworkListViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +305,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C327D202B752D5700F1F2B0 /* ContentView.swift in Sources */,
+				2C327D4C2B75370F00F1F2B0 /* ArtworkListView.swift in Sources */,
+				2C327D542B75660B00F1F2B0 /* ArtworkListViewModel.swift in Sources */,
+				2C327D492B75360100F1F2B0 /* Artwork.swift in Sources */,
+				2C327D512B75635800F1F2B0 /* NetworkingManager.swift in Sources */,
+				2C327D4E2B755CFE00F1F2B0 /* ArtworkCard.swift in Sources */,
 				2C327D1E2B752D5700F1F2B0 /* BitsoArtGalleryApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +481,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,7 +514,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
