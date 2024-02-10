@@ -12,25 +12,22 @@ struct ArtworkCard: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            AsyncImage(
-                url: URL(string: "https://www.artic.edu/iiif/2/\(artwork.imageId)/full/843,/0/default.jpg"),
-                content: { image in
-                    image.resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 120, maxHeight: 120)
-                },
-                placeholder: {
-                    ProgressView()
-                        .frame(width: 120, height: 120)
-                }
-            )
+            if let imageId = artwork.imageId, let imageUrl = APIs.Artic.getImage(id: imageId).url{
+                AsyncCachableImage(url: imageUrl)
+                    .frame(width: 120, height: 120)
+                    .aspectRatio(contentMode: .fit)
+            } else {
+                Image("ArtworkPlaceholder")
+                    .resizable()
+                    .frame(width:120, height:120, alignment: .center)
+                    .clipped()
+            }
             
             VStack(alignment:.leading) {
                 Text(artwork.title)
                     .font(.headline)
                     .bold()
-                
-                Text(artwork.artistTitle)
+                Text(artwork.artistTitle ?? "Unknown Artist")
                     .font(.subheadline)
             }
         }
@@ -39,4 +36,8 @@ struct ArtworkCard: View {
 
 #Preview {
     ArtworkCard(artwork: Artwork(id: 123, title: "Starry night and the astronauts", artistTitle: "Alma Thomas", departmentTitle: "Contemporary art", imageId: "e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9", thumbnail: nil))
+}
+
+#Preview {
+    ArtworkCard(artwork: Artwork(id: 123, title: "Starry night and the astronauts", artistTitle: "Alma Thomas", departmentTitle: "Contemporary art", imageId: nil, thumbnail: nil))
 }
