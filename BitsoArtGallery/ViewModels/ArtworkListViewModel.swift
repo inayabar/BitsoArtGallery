@@ -28,19 +28,14 @@ class ArtworkListViewModel: ObservableObject {
         self.artworkLoader = artworkLoader
     }
     
-    private var moreArtworksRemaining: Bool {
-        return artworks.count < totalArtworks
-    }
-    
     func loadInitialArtworks() async throws {
         try await loadArtworks(page: 1)
     }
     
     func requestMoreItemsIfNeeded(for index: Int) async throws {
-        if scrollingThresholdMet(at: index) && moreArtworksRemaining {
-            page += 1
-            print("fetching page \(page)")
-            try await loadArtworks(page: page)
+        if scrollingThresholdMet(at: index) && moreArtworksRemaining() {
+            let nextPage = page + 1
+            try await loadArtworks(page: nextPage)
         }
     }
     
@@ -50,15 +45,20 @@ class ArtworkListViewModel: ObservableObject {
     }
     
     private func loadArtworks(page: Int) async throws {
+        print("fetching page \(page)")
         self.pagingState = .loading
         let response = try await artworkLoader.fetchArtworks(page: page)
+        self.page += 1
         self.artworks += response.data
         self.totalArtworks = response.pagination.total
-        self.page += 1
         self.pagingState = .idle
     }
     
     private func scrollingThresholdMet(at index: Int) -> Bool {
         return (artworks.count - index) == itemsFromEndThreshold
+    }
+    
+    private func moreArtworksRemaining() -> Bool {
+        return artworks.count < totalArtworks
     }
 }

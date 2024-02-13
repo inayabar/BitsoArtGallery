@@ -19,17 +19,18 @@ struct ArtworkListView: View {
                         ArtworkDetaiView(viewModel: viewModelFactory.makeArtworkDetailViewModel(for: artwork.id))
                     } label: {
                         ArtworkCard(artwork: artwork)
-                            .listRowSeparator(.hidden)
                             .onAppear {
                                 Task {
                                    try! await viewModel.requestMoreItemsIfNeeded(for: index)
                                 }
                         }
                             .buttonStyle(.plain)
+                            .listRowSeparator(.hidden)
                     }
                 }
                 lastRowView
             }
+            .listRowSeparator(.hidden)
             .listStyle(.plain)
             .padding()
             .refreshable {
