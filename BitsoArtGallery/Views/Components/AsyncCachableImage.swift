@@ -26,9 +26,11 @@ struct AsyncCachableImage: View {
     @StateObject private var imageLoader = ImageLoader()
     @State private var image: UIImage?
     private let url: URL
+    private let placeholder: String?
     
-    init(url: URL) {
+    init(url: URL, placeholder: String? = nil) {
         self.url = url
+        self.placeholder = placeholder
     }
     
     var body: some View {
@@ -54,6 +56,8 @@ struct AsyncCachableImage: View {
             if let loadedImage = loadedImage {
                 ImageCache.shared.setImage(loadedImage, forKey: url.absoluteString)
                 self.image = loadedImage
+            } else if let placeholder {
+                self.image = UIImage(named: placeholder)
             }
         }
     }

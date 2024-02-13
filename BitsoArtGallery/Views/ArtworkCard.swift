@@ -13,7 +13,7 @@ struct ArtworkCard: View {
     var body: some View {
         HStack(alignment: .top) {
             if let imageId = artwork.imageId, let imageUrl = APIs.Artic.getImage(id: imageId).url{
-                AsyncCachableImage(url: imageUrl)
+                AsyncCachableImage(url: imageUrl, placeholder: "ArtworkPlaceholder")
                     .frame(width: 120, height: 120)
                     .aspectRatio(contentMode: .fit)
             } else {
