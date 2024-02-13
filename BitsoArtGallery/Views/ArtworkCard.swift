@@ -35,9 +35,9 @@ struct ArtworkCard: View {
 }
 
 #Preview {
-    ArtworkCard(artwork: Artwork(id: 123, title: "Starry night and the astronauts", artistTitle: "Alma Thomas", departmentTitle: "Contemporary art", imageId: "e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9", thumbnail: nil))
+    ArtworkCard(artwork: Artwork(id: 123, title: "Starry night and the astronauts", artistTitle: "Alma Thomas", departmentTitle: "Contemporary art", imageId: "e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9"))
 }
 
 #Preview {
-    ArtworkCard(artwork: Artwork(id: 123, title: "Starry night and the astronauts", artistTitle: "Alma Thomas", departmentTitle: "Contemporary art", imageId: nil, thumbnail: nil))
+    ArtworkCard(artwork: Artwork(id: 123, title: "Starry night and the astronauts", artistTitle: "Alma Thomas", departmentTitle: "Contemporary art", imageId: nil))
 }

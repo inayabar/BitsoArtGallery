@@ -12,9 +12,15 @@ class ArtworkDetailViewModel: ObservableObject {
     private let artworkLoader: ArtworkLoader
     private var artworkId: Int
     
+    @Published var artwork: ArtworkDetail? = nil
+    
     init(artworkLoader: ArtworkLoader, artworkId: Int) {
         self.artworkLoader = artworkLoader
         self.artworkId = artworkId
     }
     
+    func loadArtwork() async throws {
+        let response = try await self.artworkLoader.fetchArtworkDetail(withId: artworkId)
+        self.artwork = response?.data
+    }
 }

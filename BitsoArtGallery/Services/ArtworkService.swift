@@ -9,7 +9,7 @@ import Foundation
 
 protocol ArtworkLoader {
     func fetchArtworks(page: Int) async throws -> ArtworkList
-    func fetchArtwork(withId: Int) async throws -> Artwork?
+    func fetchArtworkDetail(withId: Int) async throws -> ArtworkDetailResponse?
 }
 
 class ArtworkService: ArtworkLoader {
@@ -26,7 +26,14 @@ class ArtworkService: ArtworkLoader {
         return try await networkingService.load(resource: resource)
     }
     
-    func fetchArtwork(withId id: Int) async throws -> Artwork? {
-        return nil
+    func fetchArtworkDetail(withId id: Int) async throws -> ArtworkDetailResponse? {
+        guard let url = APIs.Artic.getArtwork(id: id).url else {
+            throw NetworkError.invalidUrlError
+        }
+        
+        let resource = Resource.init(request: URLRequest(url: url), responseType: ArtworkDetailResponse.self)
+        
+        // TODO: Handle success case (Save file) and failure case (Use saved data)
+        return try await networkingService.load(resource: resource)
     }
 }

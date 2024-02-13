@@ -11,7 +11,24 @@ struct ArtworkDetaiView: View {
     @StateObject var viewModel: ArtworkDetailViewModel
     
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            if let imageId = viewModel.artwork?.imageId, let imageUrl = APIs.Artic.getImage(id: imageId).url{
+                AsyncCachableImage(url: imageUrl, placeholder: "ArtworkPlaceholder")
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity, maxHeight: 400)
+            } else {
+                Image("ArtworkPlaceholder")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+            }
+            Spacer()
+        }
+        .onAppear {
+            Task {
+                try! await viewModel.loadArtwork()
+            }
+        }
     }
 }
 

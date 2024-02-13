@@ -13,14 +13,4 @@ struct Artwork: Identifiable, Decodable {
     let artistTitle: String?
     let departmentTitle: String?
     let imageId: String?
-    let thumbnail: Thumbnail?
-}
-
-struct Thumbnail: Decodable {
-    let width: Int
-    let height: Int
-    
-    var aspectRatio: Float {
-        return Float(width)/Float(height)
-    }
 }

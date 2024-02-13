@@ -10,6 +10,7 @@ import Foundation
 enum APIs {
     enum Artic {
         case getArtworks(page: Int)
+        case getArtwork(id: Int)
         case getImage(id: String)
         
         var baseURL: String {
@@ -18,6 +19,8 @@ enum APIs {
                 return "https://api.artic.edu/api/v1/artworks?page=\(page)"
             case .getImage(let id):
                 return "https://www.artic.edu/iiif/2/\(id)/full/843,/0/default.jpg"
+            case .getArtwork(let id):
+                return "https://api.artic.edu/api/v1/artworks/\(id)"
             }
         }
         
