@@ -14,13 +14,17 @@ struct ArtworkListView: View {
         NavigationView {
             List() {
                 ForEach(viewModel.artworks.enumerated().map({$0}), id: \.element.id) { index, artwork in
-                    ArtworkCard(artwork: artwork)
-                        .listRowSeparator(.hidden)
-                        .onAppear {
-                            Task {
-                               try! await viewModel.requestMoreItemsIfNeeded(for: index)
-                            }
+                    NavigationLink {
+                        ArtworkDetaiView(artworkId: artwork.id)
+                    } label: {
+                        ArtworkCard(artwork: artwork)
+                            .listRowSeparator(.hidden)
+                            .onAppear {
+                                Task {
+                                   try! await viewModel.requestMoreItemsIfNeeded(for: index)
+                                }
                         }
+                    }
                 }
                 lastRowView
             }
