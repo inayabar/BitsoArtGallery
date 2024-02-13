@@ -9,13 +9,14 @@ import SwiftUI
 
 struct ArtworkListView: View {
     @StateObject var viewModel: ArtworkListViewModel
+    @EnvironmentObject var viewModelFactory: ViewModelFactory
     
     var body: some View {
         NavigationView {
             List() {
                 ForEach(viewModel.artworks.enumerated().map({$0}), id: \.element.id) { index, artwork in
                     NavigationLink {
-                        ArtworkDetaiView(artworkId: artwork.id)
+                        ArtworkDetaiView(viewModel: viewModelFactory.makeArtworkDetailViewModel(for: artwork.id))
                     } label: {
                         ArtworkCard(artwork: artwork)
                             .listRowSeparator(.hidden)
@@ -24,6 +25,7 @@ struct ArtworkListView: View {
                                    try! await viewModel.requestMoreItemsIfNeeded(for: index)
                                 }
                         }
+                            .buttonStyle(.plain)
                     }
                 }
                 lastRowView
@@ -65,6 +67,6 @@ struct ArtworkListView: View {
 }
 
 #Preview {
-    let viewModel = ArtworkListViewModel(networkManager: ArtworkService())
-    return ArtworkListView(viewModel: viewModel)
+    let viewModel = ArtworkListViewModel(artworkLoader: ArtworkService())
+    return ArtworkListView(viewModel: viewModel).environmentObject(ViewModelFactory())
 }

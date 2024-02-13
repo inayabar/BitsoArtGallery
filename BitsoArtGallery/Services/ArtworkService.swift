@@ -7,7 +7,12 @@
 
 import Foundation
 
-class ArtworkService {
+protocol ArtworkLoader {
+    func fetchArtworks(page: Int) async throws -> ArtworkList
+    func fetchArtwork(withId: Int) async throws -> Artwork?
+}
+
+class ArtworkService: ArtworkLoader {
     let networkingService: NetworkService = NetworkService()
     
     func fetchArtworks(page: Int) async throws -> ArtworkList {
@@ -19,5 +24,9 @@ class ArtworkService {
         
         // TODO: Handle success case (Save file) and failure case (Use saved data)
         return try await networkingService.load(resource: resource)
+    }
+    
+    func fetchArtwork(withId id: Int) async throws -> Artwork? {
+        return nil
     }
 }

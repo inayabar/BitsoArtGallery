@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ArtworkDetaiView: View {
-    var artworkId: Int
+    @StateObject var viewModel: ArtworkDetailViewModel
     
     var body: some View {
-        Text("Hello, World! \(artworkId)")
+        Text("Hello, World!")
     }
 }
 
 #Preview {
-    ArtworkDetaiView(artworkId: 12345)
+    ArtworkDetaiView(viewModel: ArtworkDetailViewModel(artworkLoader: ArtworkService(), artworkId: 123))
 }

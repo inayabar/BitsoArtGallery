@@ -15,7 +15,7 @@ public enum PagingState {
 
 @MainActor
 class ArtworkListViewModel: ObservableObject {
-    private let networkManager: ArtworkService
+    private let artworkLoader: ArtworkLoader
     private let itemsFromEndThreshold = 3
     private var totalArtworks: Int = 0
     private var page = 0
@@ -24,8 +24,8 @@ class ArtworkListViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var pagingState: PagingState = .idle
     
-    init(networkManager: ArtworkService) {
-        self.networkManager = networkManager
+    init(artworkLoader: ArtworkLoader) {
+        self.artworkLoader = artworkLoader
     }
     
     private var moreArtworksRemaining: Bool {
@@ -51,7 +51,7 @@ class ArtworkListViewModel: ObservableObject {
     
     private func loadArtworks(page: Int) async throws {
         self.pagingState = .loading
-        let response = try await networkManager.fetchArtworks(page: page)
+        let response = try await artworkLoader.fetchArtworks(page: page)
         self.artworks += response.data
         self.totalArtworks = response.pagination.total
         self.page += 1
