@@ -18,6 +18,7 @@
 		2C0DBF1E2B7BE27900562658 /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DBF1D2B7BE27900562658 /* ViewModelFactory.swift */; };
 		2C0DBF202B7BEFDD00562658 /* ArtworkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DBF1F2B7BEFDD00562658 /* ArtworkDetail.swift */; };
 		2C0DBF262B7C70BE00562658 /* ArtworkAdditionalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DBF252B7C70BE00562658 /* ArtworkAdditionalInfoView.swift */; };
+		2C0F46492B7D1DA70047732E /* FileManager+Bitso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0F46482B7D1DA70047732E /* FileManager+Bitso.swift */; };
 		2C327D1E2B752D5700F1F2B0 /* BitsoArtGalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D1D2B752D5700F1F2B0 /* BitsoArtGalleryApp.swift */; };
 		2C327D222B752D5900F1F2B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C327D212B752D5900F1F2B0 /* Assets.xcassets */; };
 		2C327D252B752D5900F1F2B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C327D242B752D5900F1F2B0 /* Preview Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		2C0DBF1D2B7BE27900562658 /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 		2C0DBF1F2B7BEFDD00562658 /* ArtworkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkDetail.swift; sourceTree = "<group>"; };
 		2C0DBF252B7C70BE00562658 /* ArtworkAdditionalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkAdditionalInfoView.swift; sourceTree = "<group>"; };
+		2C0F46482B7D1DA70047732E /* FileManager+Bitso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Bitso.swift"; sourceTree = "<group>"; };
 		2C327D1A2B752D5700F1F2B0 /* BitsoArtGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitsoArtGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C327D1D2B752D5700F1F2B0 /* BitsoArtGalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitsoArtGalleryApp.swift; sourceTree = "<group>"; };
 		2C327D212B752D5900F1F2B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				2C327D1D2B752D5700F1F2B0 /* BitsoArtGalleryApp.swift */,
 				2C327D212B752D5900F1F2B0 /* Assets.xcassets */,
 				2C327D232B752D5900F1F2B0 /* Preview Content */,
+				2C0F46482B7D1DA70047732E /* FileManager+Bitso.swift */,
 			);
 			path = BitsoArtGallery;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				2C0DBF082B768CC300562658 /* ArtworkList.swift in Sources */,
 				2C0DBF1C2B7BC47000562658 /* ArtworkDetailViewModel.swift in Sources */,
 				2C0DBF0F2B76B84100562658 /* Resource.swift in Sources */,
+				2C0F46492B7D1DA70047732E /* FileManager+Bitso.swift in Sources */,
 				2C0DBF262B7C70BE00562658 /* ArtworkAdditionalInfoView.swift in Sources */,
 				2C327D542B75660B00F1F2B0 /* ArtworkListViewModel.swift in Sources */,
 				2C0DBF152B76BDBE00562658 /* APIs.swift in Sources */,

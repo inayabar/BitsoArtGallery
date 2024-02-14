@@ -7,10 +7,25 @@
 
 import Foundation
 
-public enum NetworkError: Error {
+public enum NetworkError: Error, Equatable {
     case httpError(statusCode: Int)
     case decodingError(Error)
     case invalidUrlError
     case notConnectedToInternet
-    case unknown(error: Error?)
+    
+    public static func == (lhs: NetworkError, rhs: NetworkError) -> Bool {
+        switch (lhs, rhs) {
+        case (.invalidUrlError, .invalidUrlError):
+            return true
+        case let (.httpError(statusCode1), .httpError(statusCode2)):
+            return statusCode1 == statusCode2
+        case (.notConnectedToInternet, .notConnectedToInternet):
+            return true
+        case (.decodingError, .decodingError):
+            return true
+        default:
+            return false
+        }
+    }
+
 }

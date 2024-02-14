@@ -46,6 +46,7 @@ class ArtworkListViewModel: ObservableObject {
     }
     
     private func loadArtworks(page: Int) async throws {
+        // TODO: Handle errors
         self.pagingState = .loading
         let response = try await artworkLoader.fetchArtworks(page: page)
         self.page += 1
