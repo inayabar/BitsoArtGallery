@@ -10,7 +10,6 @@ import Foundation
 public enum PagingState {
     case idle
     case loading
-    case error(error: Error)
 }
 
 @MainActor
@@ -23,6 +22,7 @@ class ArtworkListViewModel: ObservableObject {
     @Published var artworks: [Artwork] = []
     @Published var isLoading = false
     @Published var pagingState: PagingState = .idle
+    @Published var isShowingError: Bool = false
     
     init(artworkLoader: ArtworkLoader) {
         self.artworkLoader = artworkLoader
@@ -46,13 +46,17 @@ class ArtworkListViewModel: ObservableObject {
     }
     
     private func loadArtworks(page: Int) async throws {
-        // TODO: Handle errors
-        self.pagingState = .loading
-        let response = try await artworkLoader.fetchArtworks(page: page)
-        self.page += 1
-        self.artworks += response.data
-        self.totalArtworks = response.pagination.total
-        self.pagingState = .idle
+        do {
+            self.pagingState = .loading
+            let response = try await artworkLoader.fetchArtworks(page: page)
+            self.page += 1
+            self.artworks += response.data
+            self.totalArtworks = response.pagination.total
+            self.pagingState = .idle
+        } catch {
+            self.isShowingError = true
+        }
+        
     }
     
     private func scrollingThresholdMet(at index: Int) -> Bool {

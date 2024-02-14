@@ -30,6 +30,7 @@
 		2C327D4E2B755CFE00F1F2B0 /* ArtworkCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D4D2B755CFD00F1F2B0 /* ArtworkCard.swift */; };
 		2C327D512B75635800F1F2B0 /* ArtworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D502B75635800F1F2B0 /* ArtworkService.swift */; };
 		2C327D542B75660B00F1F2B0 /* ArtworkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D532B75660B00F1F2B0 /* ArtworkListViewModel.swift */; };
+		2C9926162B7D43A30066CE80 /* ErrorSnackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9926152B7D43A30066CE80 /* ErrorSnackbar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		2C327D4D2B755CFD00F1F2B0 /* ArtworkCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCard.swift; sourceTree = "<group>"; };
 		2C327D502B75635800F1F2B0 /* ArtworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkService.swift; sourceTree = "<group>"; };
 		2C327D532B75660B00F1F2B0 /* ArtworkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkListViewModel.swift; sourceTree = "<group>"; };
+		2C9926152B7D43A30066CE80 /* ErrorSnackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSnackbar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				2C0DBF172B76C27B00562658 /* AsyncCachableImage.swift */,
+				2C9926152B7D43A30066CE80 /* ErrorSnackbar.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C0DBF112B76B8FD00562658 /* NetworkService.swift in Sources */,
+				2C9926162B7D43A30066CE80 /* ErrorSnackbar.swift in Sources */,
 				2C327D4C2B75370F00F1F2B0 /* ArtworkListView.swift in Sources */,
 				2C0DBF1A2B7BAE5700562658 /* ArtworkDetaiView.swift in Sources */,
 				2C0DBF1E2B7BE27900562658 /* ViewModelFactory.swift in Sources */,

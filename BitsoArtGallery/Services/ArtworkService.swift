@@ -71,17 +71,15 @@ class ArtworkService: ArtworkLoader {
     }
     
     private func fetchArtworksFromFiles(page: Int) throws -> ArtworkList {
-        do {
+            print("retrieving artwork list \(page)")
             return try fileManager.decode(ArtworkList.self, from: artworkListFileName(page: page))
-        } catch {
-            throw error // TODO: Check if error was file not found
-        }
     }
     
     
     
     private func fetchArtworkDetailFromFiles(artworkId: Int) throws -> ArtworkDetailResponse {
         do {
+            print("retrieving artwork detail \(artworkId)")
             return try fileManager.decode(ArtworkDetailResponse.self, from: artworkDetailFileName(artworkId: artworkId))
         } catch {
             throw error // TODO: Check if error was file not found
@@ -96,6 +94,7 @@ class ArtworkService: ArtworkLoader {
             
             do {
                 try fileManager.encode(input, to: fileName)
+                print("Saved file \(fileName)")
             }
             catch {
                 print(error)
