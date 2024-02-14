@@ -28,24 +28,24 @@ class ArtworkListViewModel: ObservableObject {
         self.artworkLoader = artworkLoader
     }
     
-    func loadInitialArtworks() async throws {
-        try await loadArtworks(page: 1)
+    func loadInitialArtworks() async {
+        await loadArtworks(page: 1)
     }
     
-    func requestMoreItemsIfNeeded(for index: Int) async throws {
+    func requestMoreItemsIfNeeded(for index: Int) async {
         if scrollingThresholdMet(at: index) && moreArtworksRemaining() {
             let nextPage = page + 1
-            try await loadArtworks(page: nextPage)
+            await loadArtworks(page: nextPage)
         }
     }
     
     func refresh() async {
         artworks = []
         page = 0
-        try! await loadInitialArtworks()
+        await loadInitialArtworks()
     }
     
-    private func loadArtworks(page: Int) async throws {
+    private func loadArtworks(page: Int) async {
         do {
             self.pagingState = .loading
             let response = try await artworkLoader.fetchArtworks(page: page)

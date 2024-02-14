@@ -22,7 +22,7 @@ struct ArtworkListView: View {
                             ArtworkCard(artwork: artwork)
                                 .onAppear {
                                     Task {
-                                       try! await viewModel.requestMoreItemsIfNeeded(for: index)
+                                        await viewModel.requestMoreItemsIfNeeded(for: index)
                                     }
                                 }
                                 .buttonStyle(.plain)
@@ -46,7 +46,7 @@ struct ArtworkListView: View {
         }
         .onAppear {
             Task {
-                try! await viewModel.loadInitialArtworks()
+                await viewModel.loadInitialArtworks()
             }
         }
     }
