@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ArtworkDetailView: View {
     @StateObject var viewModel: ArtworkDetailViewModel
+    @State private var showAdditionalInfo = false
     
     var body: some View {
         ScrollView {
@@ -64,31 +65,40 @@ struct ArtworkDetailView: View {
                             .padding(.horizontal)
                     }
                     
-                    Text("Credit Line: \(artwork.creditLine)")
+                    Divider()
                         .padding(.horizontal)
                     
-                    if let publicationHistory = artwork.publicationHistory {
-                        Text("Publication History: \(publicationHistory)")
-                            .padding(.horizontal)
-                    }
-                    
-                    if let exhibitionHistory = artwork.exhibitionHistory {
-                        Text("Exhibition History: \(exhibitionHistory)")
-                            .padding(.horizontal)
-                    }
-                    
-                    if let provenanceText = artwork.provenanceText {
-                        Text("Provenance: \(provenanceText)")
-                            .padding(.horizontal)
-                    }
-                    
-                    if let galleryTitle = artwork.galleryTitle {
-                        Text("Gallery: \(galleryTitle)")
-                            .padding(.horizontal)
-                    }
-                    
-                    Text("Department: \(artwork.departmentTitle)")
+                    DisclosureGroup(isExpanded: $showAdditionalInfo) {
+                        VStack(alignment: .leading, spacing: 15) {
+                            if let inscriptions = artwork.inscriptions {
+                                Text("Inscriptions: \(inscriptions)")
+                                    .foregroundColor(.secondary)
+                                    .font(.subheadline)
+                            }
+                            
+                            Text("Credit Line: \(artwork.creditLine)")
+                                .foregroundColor(.secondary)
+                                .font(.subheadline)
+                            
+                            if let publicationHistory = artwork.publicationHistory {
+                                Text("Publication History: \(publicationHistory)")
+                                    .foregroundColor(.secondary)
+                                    .font(.subheadline)
+                            }
+                        }
+                        .padding()
+                    } label: {
+                        HStack {
+                            Text("Additional Info")
+                                .font(.headline)
+                            
+                            Spacer()
+                            
+                            Image(systemName: showAdditionalInfo ? "chevron.up" : "chevron.down")
+                                .foregroundColor(.blue)
+                        }
                         .padding(.horizontal)
+                    }
                 }
                 .foregroundColor(.primary)
             } else {
