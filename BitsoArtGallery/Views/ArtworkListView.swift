@@ -16,7 +16,7 @@ struct ArtworkListView: View {
             List() {
                 ForEach(viewModel.artworks.enumerated().map({$0}), id: \.element.id) { index, artwork in
                     NavigationLink {
-                        ArtworkDetaiView(viewModel: viewModelFactory.makeArtworkDetailViewModel(for: artwork.id))
+                        ArtworkDetailView(viewModel: viewModelFactory.makeArtworkDetailViewModel(for: artwork.id))
                     } label: {
                         ArtworkCard(artwork: artwork)
                             .onAppear {

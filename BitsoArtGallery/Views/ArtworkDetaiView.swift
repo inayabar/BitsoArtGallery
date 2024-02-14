@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ArtworkDetaiView: View {
+struct ArtworkDetailView: View {
     @StateObject var viewModel: ArtworkDetailViewModel
     
     var body: some View {
@@ -104,5 +104,5 @@ struct ArtworkDetaiView: View {
 }
 
 #Preview {
-    ArtworkDetaiView(viewModel: ArtworkDetailViewModel(artworkLoader: ArtworkService(), artworkId: 191183))
+    ArtworkDetailView(viewModel: ArtworkDetailViewModel(artworkLoader: ArtworkService(), artworkId: 191183))
 }
