@@ -22,57 +22,61 @@ class ImageCache {
     }
 }
 
+fileprivate enum LoadingPhase {
+    case loading
+    case failed
+    case success(image: UIImage)
+}
+
 struct AsyncCachableImage: View {
-    @StateObject private var imageLoader = ImageLoader()
-    @State private var image: UIImage?
+    @State private var phase: LoadingPhase = .loading
     private let url: URL
-    private let placeholder: String?
+    private let placeholder: String
     
-    init(url: URL, placeholder: String? = nil) {
+    init(url: URL, placeholder: String) {
         self.url = url
         self.placeholder = placeholder
     }
     
     var body: some View {
-        if let image = image {
+        switch phase {
+        case .loading:
+            ProgressView()
+                .onAppear {
+                    Task {
+                        await loadImage()
+                    }
+                }
+        case .failed:
+            Image(placeholder)
+        case .success(image: let image):
             Image(uiImage: image)
                 .resizable()
                 .scaledToFit()
-        } else {
-            ProgressView()
-                .onAppear {
-                    loadImage()
-                }
         }
     }
     
-    private func loadImage() {
+    private func loadImage() async {
         if let cachedImage = ImageCache.shared.getImage(forKey: url.absoluteString) {
-            self.image = cachedImage
+            phase = .success(image: cachedImage)
             return
         }
         
-        imageLoader.loadImage(from: url) { loadedImage in
-            if let loadedImage = loadedImage {
-                ImageCache.shared.setImage(loadedImage, forKey: url.absoluteString)
-                self.image = loadedImage
-            } else if let placeholder {
-                self.image = UIImage(named: placeholder)
-            }
-        }
-    }
-}
-
-class ImageLoader: ObservableObject {
-    func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, let uiImage = UIImage(data: data) else {
-                completion(nil)
+        do {
+            phase = .loading
+            let (data, response) = try await URLSession.shared.data(from: url)
+            
+            guard let response = response as? HTTPURLResponse, (200..<300 ~= response.statusCode)else {
+                phase = .failed
                 return
             }
-            DispatchQueue.main.async {
-                completion(uiImage)
+            
+            if let uiImage = UIImage(data: data) {
+                ImageCache.shared.setImage(uiImage, forKey: url.absoluteString)
+                phase = .success(image: uiImage)
             }
-        }.resume()
+        } catch {
+            print("Failed to load image: \(error)")
+        }
     }
 }

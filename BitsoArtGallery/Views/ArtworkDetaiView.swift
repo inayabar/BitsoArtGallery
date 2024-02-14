@@ -12,7 +12,7 @@ struct ArtworkDetaiView: View {
     
     var body: some View {
         VStack {
-            if let imageId = viewModel.artwork?.imageId, let imageUrl = APIs.Artic.getImage(id: imageId).url{
+            if let imageUrl = viewModel.getImageURL() {
                 AsyncCachableImage(url: imageUrl, placeholder: "ArtworkPlaceholder")
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: .infinity, maxHeight: 400)

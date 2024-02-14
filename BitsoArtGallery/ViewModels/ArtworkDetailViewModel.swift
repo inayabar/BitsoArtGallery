@@ -23,4 +23,12 @@ class ArtworkDetailViewModel: ObservableObject {
         let response = try await self.artworkLoader.fetchArtworkDetail(withId: artworkId)
         self.artwork = response?.data
     }
+    
+    func getImageURL() -> URL? {
+        guard let id = artwork?.imageId else {
+            return nil
+        }
+        
+         return APIs.Artic.getImage(id: id).url
+    }
 }
