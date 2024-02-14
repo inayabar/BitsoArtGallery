@@ -13,11 +13,17 @@ struct ArtworkDetailResponse: Decodable {
 struct ArtworkDetail: Decodable {
     let id: Int
     let title: String
-    let artistTitle: String?
-    let departmentTitle: String?
-    let imageId: String?
+    let artistDisplay: String
+    let dateDisplay: String
+    let mediumDisplay: String
+    let dimensions: String
     let description: String?
-    let artistDisplay: String?
-    let dimensions: String?
-    let mediumDisplay: String?
+    let imageId: String?
+    let inscriptions: String?
+    let creditLine: String
+    let publicationHistory: String?
+    let exhibitionHistory: String?
+    let provenanceText: String?
+    let galleryTitle: String?
+    let departmentTitle: String
 }

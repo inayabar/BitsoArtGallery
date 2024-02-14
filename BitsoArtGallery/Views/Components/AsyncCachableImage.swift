@@ -77,6 +77,7 @@ struct AsyncCachableImage: View {
             }
         } catch {
             print("Failed to load image: \(error)")
+            phase = .failed
         }
     }
 }
