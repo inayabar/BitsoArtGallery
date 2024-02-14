@@ -13,4 +13,6 @@ struct Artwork: Identifiable, Decodable {
     let artistTitle: String?
     let departmentTitle: String?
     let imageId: String?
+    
+    static let fields = ["id", "title", "artist_title", "department_title", "image_id"]
 }

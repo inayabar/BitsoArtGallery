@@ -16,11 +16,11 @@ enum APIs {
         var baseURL: String {
             switch self {
             case .getArtworks(let page):
-                return "https://api.artic.edu/api/v1/artworks?page=\(page)"
+                return "https://api.artic.edu/api/v1/artworks?page=\(page)&fields=\(Artwork.fields.joined(separator: ","))"
             case .getImage(let id):
                 return "https://www.artic.edu/iiif/2/\(id)/full/843,/0/default.jpg"
             case .getArtwork(let id):
-                return "https://api.artic.edu/api/v1/artworks/\(id)"
+                return "https://api.artic.edu/api/v1/artworks/\(id)?fields=\(ArtworkDetail.fields.joined(separator: ","))"
             }
         }
         

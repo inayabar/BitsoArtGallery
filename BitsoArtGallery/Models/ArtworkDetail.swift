@@ -26,4 +26,6 @@ struct ArtworkDetail: Decodable {
     let provenanceText: String?
     let galleryTitle: String?
     let departmentTitle: String
+    
+    static let fields = ["id", "title", "artist_display", "date_display", "medium_display", "dimensions", "description", "image_id", "inscriptions", "credit_line", "publication_history", "exhibition_history", "provenance_text", "gallery_title", "department_title"]
 }

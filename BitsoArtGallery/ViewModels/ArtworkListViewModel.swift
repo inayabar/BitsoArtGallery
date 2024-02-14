@@ -16,7 +16,7 @@ public enum PagingState {
 @MainActor
 class ArtworkListViewModel: ObservableObject {
     private let artworkLoader: ArtworkLoader
-    private let itemsFromEndThreshold = 3
+    private let itemsFromEndThreshold = 12
     private var totalArtworks: Int = 0
     private var page = 0
     
@@ -41,6 +41,7 @@ class ArtworkListViewModel: ObservableObject {
     
     func refresh() async {
         artworks = []
+        page = 0
         try! await loadInitialArtworks()
     }
     
