@@ -26,8 +26,9 @@ class ArtworkService: ArtworkLoader {
             throw NetworkError.invalidUrlError
         }
         
+        let resource = Resource.init(request: URLRequest(url: url), responseType: ArtworkList.self)
+        
         do {
-            let resource = Resource.init(request: URLRequest(url: url), responseType: ArtworkList.self)
             let artworkList = try await networkingService.load(resource: resource)
             
             saveToFile(artworkList, fileName: artworkListFileName(page: page))
@@ -47,35 +48,44 @@ class ArtworkService: ArtworkLoader {
         
         let resource = Resource.init(request: URLRequest(url: url), responseType: ArtworkDetailResponse.self)
         
-        // TODO: Handle success case (Save file) and failure case (Use saved data)
-        return try await networkingService.load(resource: resource)
+        do {
+            let artworkDetailResponse = try await networkingService.load(resource: resource)
+            
+            saveToFile(artworkDetailResponse, fileName: artworkDetailFileName(artworkId: id))
+            return artworkDetailResponse
+        } catch {
+            guard let error = error as? NetworkError, error == .notConnectedToInternet else { throw error }
+            
+            // User is offline, attempt to fetch page from files
+            return try fetchArtworkDetailFromFiles(artworkId: id)
+        }
     }
     
     // MARK: File management
-    private func fetchArtworksFromFiles(page: Int) throws -> ArtworkList {
-        do {
-            return try fileManager.decode(ArtworkList.self, from: "artworks_list_page\(page).json")
-        } catch {
-            throw error // TODO: Check if error was file not found
-        }
-    }
-    
-    
-    
-    private func fetchArtworkDetailFromFiles(artworkId: Int) throws -> ArtworkDetail {
-        do {
-            return try fileManager.decode(ArtworkDetail.self, from: "artwork_detail_\(artworkId).json")
-        } catch {
-            throw error // TODO: Check if error was file not found
-        }
-    }
-    
     private func artworkListFileName(page: Int) -> String {
         return "artworks_list_page\(page).json"
     }
     
-    private func artworkDetailFileName(artworkDetail: ArtworkDetail) -> String{
-        return "artwork_detail_\(artworkDetail.id).json"
+    private func artworkDetailFileName(artworkId: Int) -> String{
+        return "artwork_detail_\(artworkId).json"
+    }
+    
+    private func fetchArtworksFromFiles(page: Int) throws -> ArtworkList {
+        do {
+            return try fileManager.decode(ArtworkList.self, from: artworkListFileName(page: page))
+        } catch {
+            throw error // TODO: Check if error was file not found
+        }
+    }
+    
+    
+    
+    private func fetchArtworkDetailFromFiles(artworkId: Int) throws -> ArtworkDetailResponse {
+        do {
+            return try fileManager.decode(ArtworkDetailResponse.self, from: artworkDetailFileName(artworkId: artworkId))
+        } catch {
+            throw error // TODO: Check if error was file not found
+        }
     }
     
     private func saveToFile<T: Encodable>(_ input: T, fileName: String) {
