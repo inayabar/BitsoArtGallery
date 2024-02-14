@@ -10,7 +10,6 @@ import Foundation
 struct ArtworkList: Decodable {
     let pagination: Pagination
     let data: [Artwork]
-    let config: Config
 }
 
 struct Pagination: Decodable {
@@ -18,6 +17,4 @@ struct Pagination: Decodable {
     let totalPages: Int
 }
 
-struct Config: Decodable {
-    let iiifUrl: String
-}
+

@@ -9,21 +9,28 @@ import SwiftUI
 
 struct ArtworkListView: View {
     @StateObject var viewModel: ArtworkListViewModel
+    @EnvironmentObject var viewModelFactory: ViewModelFactory
     
     var body: some View {
         NavigationView {
             List() {
                 ForEach(viewModel.artworks.enumerated().map({$0}), id: \.element.id) { index, artwork in
-                    ArtworkCard(artwork: artwork)
-                        .listRowSeparator(.hidden)
-                        .onAppear {
-                            Task {
-                               try! await viewModel.requestMoreItemsIfNeeded(for: index)
-                            }
+                    NavigationLink {
+                        ArtworkDetailView(viewModel: viewModelFactory.makeArtworkDetailViewModel(for: artwork.id))
+                    } label: {
+                        ArtworkCard(artwork: artwork)
+                            .onAppear {
+                                Task {
+                                   try! await viewModel.requestMoreItemsIfNeeded(for: index)
+                                }
                         }
+                            .buttonStyle(.plain)
+                            .listRowSeparator(.hidden)
+                    }
                 }
                 lastRowView
             }
+            .listRowSeparator(.hidden)
             .listStyle(.plain)
             .padding()
             .refreshable {
@@ -61,6 +68,6 @@ struct ArtworkListView: View {
 }
 
 #Preview {
-    let viewModel = ArtworkListViewModel(networkManager: ArtworkService())
-    return ArtworkListView(viewModel: viewModel)
+    let viewModel = ArtworkListViewModel(artworkLoader: ArtworkService())
+    return ArtworkListView(viewModel: viewModel).environmentObject(ViewModelFactory())
 }

@@ -9,11 +9,12 @@ import SwiftUI
 
 @main
 struct BitsoArtGalleryApp: App {
-    let networkManager = ArtworkService()
+    let viewModelFactory = ViewModelFactory()
     
     var body: some Scene {
         WindowGroup {
-            ArtworkListView(viewModel: ArtworkListViewModel(networkManager: networkManager))
+            ArtworkListView(viewModel: viewModelFactory.makeArtworkListViewModel())
+                .environmentObject(viewModelFactory)
         }
     }
 }
