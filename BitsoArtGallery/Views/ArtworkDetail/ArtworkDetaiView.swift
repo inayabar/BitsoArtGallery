@@ -69,24 +69,7 @@ struct ArtworkDetailView: View {
                         .padding(.horizontal)
                     
                     DisclosureGroup(isExpanded: $showAdditionalInfo) {
-                        VStack(alignment: .leading, spacing: 15) {
-                            if let inscriptions = artwork.inscriptions {
-                                Text("Inscriptions: \(inscriptions)")
-                                    .foregroundColor(.secondary)
-                                    .font(.subheadline)
-                            }
-                            
-                            Text("Credit Line: \(artwork.creditLine)")
-                                .foregroundColor(.secondary)
-                                .font(.subheadline)
-                            
-                            if let publicationHistory = artwork.publicationHistory {
-                                Text("Publication History: \(publicationHistory)")
-                                    .foregroundColor(.secondary)
-                                    .font(.subheadline)
-                            }
-                        }
-                        .padding()
+                        ArtworkAdditionalInfoView(artwork: artwork)
                     } label: {
                         HStack {
                             Text("Additional Info")

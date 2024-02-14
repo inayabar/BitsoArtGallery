@@ -20,7 +20,7 @@ struct ArtworkDetail: Decodable {
     let description: String?
     let imageId: String?
     let inscriptions: String?
-    let creditLine: String
+    let creditLine: String?
     let publicationHistory: String?
     let exhibitionHistory: String?
     let provenanceText: String?
