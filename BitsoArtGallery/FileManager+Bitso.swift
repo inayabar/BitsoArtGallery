@@ -42,7 +42,6 @@ extension FileManager {
     }
 }
 
-enum FileManagerError: Error {
+enum FileManagerError: Error, Equatable {
     case fileNotFound
-    case decodingError(Error)
 }

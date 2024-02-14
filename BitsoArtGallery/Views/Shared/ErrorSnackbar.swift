@@ -18,10 +18,11 @@ struct ErrorSnackbar: View {
             if isShowing {
                 HStack {
                     Image(systemName: "exclamationmark.triangle.fill")
-                        .foregroundColor(.red)
+                        .foregroundColor(.white)
                     Text(errorMessage)
                         .foregroundColor(.white)
-                    Spacer()
+                        .font(.subheadline)
+                        .lineLimit(2)
                 }
                 .padding()
                 .background(Color.red)
@@ -41,5 +42,5 @@ struct ErrorSnackbar: View {
 }
 
 #Preview {
-    ErrorSnackbar(errorMessage: "Oops! There was an error", isShowing: .constant(true), dismissAfter: 3.0)
+    ErrorSnackbar(errorMessage: "Oops! There was an error. Please try again later", isShowing: .constant(true), dismissAfter: 3.0)
 }
