@@ -14,8 +14,8 @@ protocol ArtworkLoader {
 
 enum ArtworkLoaderError: String, Error {
     case invalidUrl = "This artwork created an invalid request. Please try again"
-    case offlineAndNotCached = "It seems you are offline and we couldn't save the information. Please try again"
-    case couldNotLoadArtwork = "Could not load this artwork. Please, try again"
+    case offlineAndNotCached = "It seems you are offline and we couldn't fetch more artworks. Please try again"
+    case couldNotLoadArtwork = "Could not load this artwork. Please try again"
 }
 
 class ArtworkService: ArtworkLoader {
