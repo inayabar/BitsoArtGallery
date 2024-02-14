@@ -8,7 +8,7 @@
 import Foundation
 
 class ViewModelFactory: ObservableObject {
-    let artworkLoader = ArtworkService()
+    let artworkLoader = ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default)
     
     @MainActor 
     func makeArtworkListViewModel() -> ArtworkListViewModel {

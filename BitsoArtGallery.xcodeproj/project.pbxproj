@@ -31,6 +31,7 @@
 		2C327D512B75635800F1F2B0 /* ArtworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D502B75635800F1F2B0 /* ArtworkService.swift */; };
 		2C327D542B75660B00F1F2B0 /* ArtworkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D532B75660B00F1F2B0 /* ArtworkListViewModel.swift */; };
 		2C9926162B7D43A30066CE80 /* ErrorSnackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9926152B7D43A30066CE80 /* ErrorSnackbar.swift */; };
+		2C9926192B7D4B350066CE80 /* ArtworkServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9926182B7D4B340066CE80 /* ArtworkServiceTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		2C327D502B75635800F1F2B0 /* ArtworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkService.swift; sourceTree = "<group>"; };
 		2C327D532B75660B00F1F2B0 /* ArtworkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkListViewModel.swift; sourceTree = "<group>"; };
 		2C9926152B7D43A30066CE80 /* ErrorSnackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSnackbar.swift; sourceTree = "<group>"; };
+		2C9926182B7D4B340066CE80 /* ArtworkServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkServiceTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 		2C327D2D2B752D5900F1F2B0 /* BitsoArtGalleryTests */ = {
 			isa = PBXGroup;
 			children = (
+				2C9926172B7D4B220066CE80 /* Services */,
 				2C327D2E2B752D5900F1F2B0 /* BitsoArtGalleryTests.swift */,
 			);
 			path = BitsoArtGalleryTests;
@@ -248,6 +251,14 @@
 				2C0DBF1D2B7BE27900562658 /* ViewModelFactory.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2C9926172B7D4B220066CE80 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2C9926182B7D4B340066CE80 /* ArtworkServiceTest.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C9926192B7D4B350066CE80 /* ArtworkServiceTest.swift in Sources */,
 				2C327D2F2B752D5900F1F2B0 /* BitsoArtGalleryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

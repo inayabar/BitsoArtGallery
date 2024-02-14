@@ -70,6 +70,6 @@ struct ArtworkListView: View {
 }
 
 #Preview {
-    let viewModel = ArtworkListViewModel(artworkLoader: ArtworkService())
+    let viewModel = ArtworkListViewModel(artworkLoader: ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default))
     return ArtworkListView(viewModel: viewModel).environmentObject(ViewModelFactory())
 }
