@@ -46,7 +46,7 @@ class NetworkService: NetworkServicing {
             } else if let _ = error as? DecodingError {
                 throw NetworkError.decodingError(error)
             } else {
-                throw NetworkError.unknown(error: error)
+                throw error
             }
         }
     }

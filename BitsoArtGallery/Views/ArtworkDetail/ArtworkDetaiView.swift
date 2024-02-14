@@ -97,5 +97,5 @@ struct ArtworkDetailView: View {
 }
 
 #Preview {
-    ArtworkDetailView(viewModel: ArtworkDetailViewModel(artworkLoader: ArtworkService(), artworkId: 191183))
+    ArtworkDetailView(viewModel: ArtworkDetailViewModel(artworkLoader: ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default), artworkId: 191183))
 }

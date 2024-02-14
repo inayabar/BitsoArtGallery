@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Artwork: Identifiable, Decodable {
+struct Artwork: Identifiable, Codable {
     let id: Int
     let title: String
     let artistTitle: String?

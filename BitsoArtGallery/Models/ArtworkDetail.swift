@@ -6,11 +6,11 @@
 //
 
 import Foundation
-struct ArtworkDetailResponse: Decodable {
+struct ArtworkDetailResponse: Codable {
     let data: ArtworkDetail
 }
 
-struct ArtworkDetail: Decodable {
+struct ArtworkDetail: Codable {
     let id: Int
     let title: String
     let artistDisplay: String

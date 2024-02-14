@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ArtworkList: Decodable {
+struct ArtworkList: Codable {
     let pagination: Pagination
     let data: [Artwork]
 }
 
-struct Pagination: Decodable {
+struct Pagination: Codable {
     let total: Int
     let totalPages: Int
 }

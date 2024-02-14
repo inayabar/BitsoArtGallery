@@ -13,36 +13,40 @@ struct ArtworkListView: View {
     
     var body: some View {
         NavigationView {
-            List() {
-                ForEach(viewModel.artworks.enumerated().map({$0}), id: \.element.id) { index, artwork in
-                    NavigationLink {
-                        ArtworkDetailView(viewModel: viewModelFactory.makeArtworkDetailViewModel(for: artwork.id))
-                    } label: {
-                        ArtworkCard(artwork: artwork)
-                            .onAppear {
-                                Task {
-                                   try! await viewModel.requestMoreItemsIfNeeded(for: index)
+            ZStack {
+                List() {
+                    ForEach(viewModel.artworks.enumerated().map({$0}), id: \.element.id) { index, artwork in
+                        NavigationLink {
+                            ArtworkDetailView(viewModel: viewModelFactory.makeArtworkDetailViewModel(for: artwork.id))
+                        } label: {
+                            ArtworkCard(artwork: artwork)
+                                .onAppear {
+                                    Task {
+                                        await viewModel.requestMoreItemsIfNeeded(for: index)
+                                    }
                                 }
+                                .buttonStyle(.plain)
+                                .listRowSeparator(.hidden)
                         }
-                            .buttonStyle(.plain)
-                            .listRowSeparator(.hidden)
+                    }
+                    lastRowView
+                }
+                .listRowSeparator(.hidden)
+                .listStyle(.plain)
+                .padding()
+                .refreshable {
+                    Task {
+                        await viewModel.refresh()
                     }
                 }
-                lastRowView
-            }
-            .listRowSeparator(.hidden)
-            .listStyle(.plain)
-            .padding()
-            .refreshable {
-                Task {
-                    await viewModel.refresh()
-                }
+                
+                ErrorSnackbar(errorMessage: "Oh no! Could not load more artworks", isShowing: $viewModel.isShowingError, dismissAfter: 3.0)
             }
             .navigationTitle("Artworks")
         }
         .onAppear {
             Task {
-                try! await viewModel.loadInitialArtworks()
+                await viewModel.loadInitialArtworks()
             }
         }
     }
@@ -59,8 +63,6 @@ struct ArtworkListView: View {
                 .listRowSeparator(.hidden)
             case .idle:
                 EmptyView()
-            case .error(_):
-                EmptyView()
             }
         }
         .frame(height: 50)
@@ -68,6 +70,6 @@ struct ArtworkListView: View {
 }
 
 #Preview {
-    let viewModel = ArtworkListViewModel(artworkLoader: ArtworkService())
+    let viewModel = ArtworkListViewModel(artworkLoader: ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default))
     return ArtworkListView(viewModel: viewModel).environmentObject(ViewModelFactory())
 }

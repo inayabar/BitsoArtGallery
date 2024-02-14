@@ -49,6 +49,7 @@ struct AsyncCachableImage: View {
                 }
         case .failed:
             Image(placeholder)
+                .resizable()
         case .success(image: let image):
             Image(uiImage: image)
                 .resizable()
