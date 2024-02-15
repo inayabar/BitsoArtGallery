@@ -18,6 +18,7 @@ class ArtworkListViewModel: ObservableObject {
     private let itemsFromEndThreshold = 12
     private var totalArtworks: Int = 0
     private var page = 0
+    private var artworkSet: Set<Artwork> = Set()
     
     @Published var artworks: [Artwork] = []
     @Published var isLoading = false
@@ -42,6 +43,7 @@ class ArtworkListViewModel: ObservableObject {
     
     func refresh() async {
         artworks = []
+        artworkSet.removeAll()
         page = 0
         await loadInitialArtworks()
     }
@@ -51,7 +53,14 @@ class ArtworkListViewModel: ObservableObject {
             self.pagingState = .loading
             let response = try await artworkLoader.fetchArtworks(page: page)
             self.page += 1
-            self.artworks += response.data
+            
+            response.data.forEach { artwork in
+                if !artworkSet.contains(artwork) {
+                    artworks.append(artwork)
+                    artworkSet.insert(artwork)
+                }
+            }
+            
             self.totalArtworks = response.pagination.total
             self.pagingState = .idle
             self.isShowingError = false
