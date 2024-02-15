@@ -40,6 +40,11 @@ extension FileManager {
         let loaded = try decoder.decode(T.self, from: data)
         return loaded
     }
+    
+    func getData(for key: String) throws -> Data {
+        let url = getDocumentsDirectory().appendingPathComponent("\(key).png")
+        return try Data(contentsOf: url)
+    }
 }
 
 enum FileManagerError: Error, Equatable {

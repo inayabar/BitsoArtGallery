@@ -14,11 +14,39 @@ class ImageCache {
     private let cache = NSCache<NSString, UIImage>()
     
     func getImage(forKey key: String) -> UIImage? {
-        return cache.object(forKey: NSString(string: key))
+        if let cachedImage = cache.object(forKey: NSString(string: key)) {
+            return cachedImage
+        }
+        
+        return getImageFromFiles(key)
     }
     
     func setImage(_ image: UIImage, forKey key: String) {
         cache.setObject(image, forKey: NSString(string: key))
+        saveImageInFiles(image, forKey: key)
+    }
+    
+    private func saveImageInFiles(_ image: UIImage, forKey key: String) {
+        guard let imageData = image.pngData() else {
+            return
+        }
+        
+        do {
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let fileURL = documentsURL.appendingPathComponent("\(key)")
+            try imageData.write(to: fileURL)
+        } catch {
+            print("Error saving image: \(error)")
+        }
+    }
+    
+    private func getImageFromFiles(_ key: String) -> UIImage? {
+        do {
+            let imageData = try FileManager.default.getData(for: key)
+            return UIImage(data: imageData)
+        } catch {
+            return nil
+        }
     }
 }
 
