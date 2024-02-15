@@ -8,7 +8,14 @@
 import Foundation
 
 class ViewModelFactory: ObservableObject {
-    let artworkLoader = ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default)
+    var artworkLoader: ArtworkLoader {
+        if CommandLine.arguments.contains("-UITests") {
+            // Running UI test, should inject fake service
+            return MockArtworkLoader()
+        } else {
+            return ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default)
+        }
+    }
     
     @MainActor 
     func makeArtworkListViewModel() -> ArtworkListViewModel {
