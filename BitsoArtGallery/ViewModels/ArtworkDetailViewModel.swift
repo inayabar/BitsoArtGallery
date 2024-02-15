@@ -21,7 +21,7 @@ class ArtworkDetailViewModel: ObservableObject, ErrorHandlingViewModel {
         self.artworkId = artworkId
     }
     
-    func loadArtwork() async throws {
+    func loadArtwork() async {
         do {
             let response = try await self.artworkLoader.fetchArtworkDetail(withId: artworkId)
             self.artwork = response.data
@@ -53,10 +53,10 @@ class ArtworkDetailViewModel: ObservableObject, ErrorHandlingViewModel {
             return nil
         }
         
-        let htmlPattern = "<[^>]+>"
+        let htmlTagPattern = "<[^>]+>"
         
         do {
-            let regex = try NSRegularExpression(pattern: htmlPattern, options: .caseInsensitive)
+            let regex = try NSRegularExpression(pattern: htmlTagPattern, options: .caseInsensitive)
             
             // Remove HTML tags from the input string
             let range = NSRange(location: 0, length: description.utf16.count)

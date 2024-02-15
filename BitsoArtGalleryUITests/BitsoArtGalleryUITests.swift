@@ -8,26 +8,42 @@
 import XCTest
 
 final class BitsoArtGalleryUITests: XCTestCase {
-
+    var app: XCUIApplication!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        super.setUp()
+        app = XCUIApplication()
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app.launchArguments = ["-UITests"]
+        app.launch()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCardsAreShown() throws {
+        // Assert all cards are shown
+        MockArtworkLoader.artworks.forEach({ artwork in
+            let titleLabel = app.staticTexts[artwork.title]
+            XCTAssertEqual(titleLabel.label, artwork.title)
+            
+            if let artistTitle = artwork.artistTitle {
+                let artistLabel = app.staticTexts[artistTitle]
+                XCTAssertEqual(artistLabel.label, artistTitle)
+            }
+        })
+    }
+    
+    @MainActor
+    func testNavigationToDetail() async throws {
+        let artworkDetail = try! await MockArtworkLoader().fetchArtworkDetail(withId: 1)
+        XCTAssert(app.staticTexts["Artworks"].exists)
+        
+        let firstCardLabel = app.staticTexts[MockArtworkLoader.artworks.first!.title]
+        firstCardLabel.tap()
+        
+        XCTAssert(app.staticTexts[artworkDetail.data.description!].exists)
+        XCTAssert(app.staticTexts["Additional Details"].exists)
     }
 
     func testLaunchPerformance() throws {

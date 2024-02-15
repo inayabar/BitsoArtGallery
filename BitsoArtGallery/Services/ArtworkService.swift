@@ -19,12 +19,14 @@ enum ArtworkLoaderError: String, Error {
 }
 
 class ArtworkService: ArtworkLoader {
-    let networkingService: NetworkService
-    let fileManager: FileManager
+    let networkingService: NetworkResourceLoader
+    let fileManager: FileManaging
+    let dispatcher: Dispatching
     
-    init(networkingService: NetworkService, fileManager: FileManager) {
+    init(networkingService: NetworkResourceLoader, fileManager: FileManaging, dispatcher: Dispatching = DispatchQueue.global(qos: .background)) {
         self.networkingService = networkingService
         self.fileManager = fileManager
+        self.dispatcher = dispatcher
     }
     
     func fetchArtworks(page: Int) async throws -> ArtworkList {
@@ -94,7 +96,7 @@ class ArtworkService: ArtworkLoader {
     }
     
     private func saveToFile<T: Encodable>(_ input: T, fileName: String) {
-        DispatchQueue.global(qos: .background).async { [weak self] in
+        dispatcher.async(execute: DispatchWorkItem(block: { [weak self] in
             guard let self = self else {
                 return
             }
@@ -106,6 +108,6 @@ class ArtworkService: ArtworkLoader {
                 //
                 print(error)
             }
-        }
+        }))
     }
 }

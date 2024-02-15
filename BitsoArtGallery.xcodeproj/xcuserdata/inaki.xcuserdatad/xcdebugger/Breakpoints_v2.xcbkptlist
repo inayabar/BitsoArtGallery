@@ -3,4 +3,348 @@
    uuid = "3F2B5FEE-6488-476F-ABD6-7159A938EECF"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "18D97232-EC05-43E0-9126-2F256E1E16CE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitsoArtGallery/Services/ArtworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "fetchArtworks(page:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "18D97232-EC05-43E0-9126-2F256E1E16CE - be7bcf1ed6cc9da1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for BitsoArtGallery.ArtworkService.fetchArtworks(page: Swift.Int) async throws -&gt; BitsoArtGallery.ArtworkList"
+                  moduleName = "BitsoArtGallery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "18D97232-EC05-43E0-9126-2F256E1E16CE - be7bcf1ed6cc9da1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for BitsoArtGallery.ArtworkService.fetchArtworks(page: Swift.Int) async throws -&gt; BitsoArtGallery.ArtworkList"
+                  moduleName = "BitsoArtGallery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  uuid = "18D97232-EC05-43E0-9126-2F256E1E16CE - dc5a2d91925e53a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for BitsoArtGalleryTests.ArtworkService.fetchArtworks(page: Swift.Int) async throws -&gt; BitsoArtGalleryTests.ArtworkList"
+                  moduleName = "BitsoArtGalleryTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "18D97232-EC05-43E0-9126-2F256E1E16CE - dc5a2d91925e53a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for BitsoArtGalleryTests.ArtworkService.fetchArtworks(page: Swift.Int) async throws -&gt; BitsoArtGalleryTests.ArtworkList"
+                  moduleName = "BitsoArtGalleryTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  uuid = "18D97232-EC05-43E0-9126-2F256E1E16CE - be7bcf1ed6cc9def"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for BitsoArtGallery.ArtworkService.fetchArtworks(page: Swift.Int) async throws -&gt; BitsoArtGallery.ArtworkList"
+                  moduleName = "BitsoArtGallery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "18D97232-EC05-43E0-9126-2F256E1E16CE - be7bcf1ed6cc9def"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for BitsoArtGallery.ArtworkService.fetchArtworks(page: Swift.Int) async throws -&gt; BitsoArtGallery.ArtworkList"
+                  moduleName = "BitsoArtGallery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  uuid = "18D97232-EC05-43E0-9126-2F256E1E16CE - 569f4619067f5d41"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for BitsoArtGalleryUITests.ArtworkService.fetchArtworks(page: Swift.Int) async throws -&gt; BitsoArtGalleryUITests.ArtworkList"
+                  moduleName = "BitsoArtGalleryUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "18D97232-EC05-43E0-9126-2F256E1E16CE - 569f4619067f5d41"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for BitsoArtGalleryUITests.ArtworkService.fetchArtworks(page: Swift.Int) async throws -&gt; BitsoArtGalleryUITests.ArtworkList"
+                  moduleName = "BitsoArtGalleryUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "396">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1979F11F-6D9C-46F8-BDE0-52D2EF8EE3DF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitsoArtGallery/Services/ArtworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "fetchArtworks(page:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1979F11F-6D9C-46F8-BDE0-52D2EF8EE3DF - 711240a40a0cb6a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for BitsoArtGallery.ArtworkService.fetchArtworks(page: Swift.Int) async throws -&gt; BitsoArtGallery.ArtworkList"
+                  moduleName = "BitsoArtGallery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  uuid = "1979F11F-6D9C-46F8-BDE0-52D2EF8EE3DF - e303708cfd6448bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for BitsoArtGalleryTests.ArtworkService.fetchArtworks(page: Swift.Int) async throws -&gt; BitsoArtGalleryTests.ArtworkList"
+                  moduleName = "BitsoArtGalleryTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  uuid = "1979F11F-6D9C-46F8-BDE0-52D2EF8EE3DF - 711240a40a0cb6fa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for BitsoArtGallery.ArtworkService.fetchArtworks(page: Swift.Int) async throws -&gt; BitsoArtGallery.ArtworkList"
+                  moduleName = "BitsoArtGallery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  uuid = "1979F11F-6D9C-46F8-BDE0-52D2EF8EE3DF - 9695cd6f9fb53a4c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for BitsoArtGalleryUITests.ArtworkService.fetchArtworks(page: Swift.Int) async throws -&gt; BitsoArtGalleryUITests.ArtworkList"
+                  moduleName = "BitsoArtGalleryUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "304">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DCCFE36B-A9A0-4739-B6D3-8588E71EA132"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitsoArtGallery/Services/ArtworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "fetchArtworkDetail(withId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DCCFE36B-A9A0-4739-B6D3-8588E71EA132 - f22ee07380a30d0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for BitsoArtGallery.ArtworkService.fetchArtworkDetail(withId: Swift.Int) async throws -&gt; BitsoArtGallery.ArtworkDetailResponse"
+                  moduleName = "BitsoArtGallery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "460">
+               </Location>
+               <Location
+                  uuid = "DCCFE36B-A9A0-4739-B6D3-8588E71EA132 - a0d441897633bec6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for BitsoArtGalleryTests.ArtworkService.fetchArtworkDetail(withId: Swift.Int) async throws -&gt; BitsoArtGalleryTests.ArtworkDetailResponse"
+                  moduleName = "BitsoArtGalleryTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "460">
+               </Location>
+               <Location
+                  uuid = "DCCFE36B-A9A0-4739-B6D3-8588E71EA132 - f22ee07380a301e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for BitsoArtGallery.ArtworkService.fetchArtworkDetail(withId: Swift.Int) async throws -&gt; BitsoArtGallery.ArtworkDetailResponse"
+                  moduleName = "BitsoArtGallery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "460">
+               </Location>
+               <Location
+                  uuid = "DCCFE36B-A9A0-4739-B6D3-8588E71EA132 - dd1d4f93a4c4ec5e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for BitsoArtGalleryUITests.ArtworkService.fetchArtworkDetail(withId: Swift.Int) async throws -&gt; BitsoArtGalleryUITests.ArtworkDetailResponse"
+                  moduleName = "BitsoArtGalleryUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGallery/Services/ArtworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "460">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59FAB20A-7B7E-4F40-BB5D-F9A3A6BBB079"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BitsoArtGalleryTests/Mocks/MockFileManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "encode(_:to:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "59FAB20A-7B7E-4F40-BB5D-F9A3A6BBB079 - f1a83916cf9f0941"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitsoArtGalleryTests.MockFileManager.encode&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Encodable&gt;(_: &#x3c4;_0_0, to: Swift.String) throws -&gt; ()"
+                  moduleName = "BitsoArtGalleryTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGalleryTests/Mocks/MockFileManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "59FAB20A-7B7E-4F40-BB5D-F9A3A6BBB079 - f1a83916cf9f0941"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitsoArtGalleryTests.MockFileManager.encode&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Encodable&gt;(_: &#x3c4;_0_0, to: Swift.String) throws -&gt; ()"
+                  moduleName = "BitsoArtGalleryTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inaki/Projects/iOS/BitsoArtGallery/BitsoArtGalleryTests/Mocks/MockFileManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

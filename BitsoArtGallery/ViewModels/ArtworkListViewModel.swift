@@ -16,7 +16,7 @@ public enum PagingState {
 class ArtworkListViewModel: ObservableObject {
     private let artworkLoader: ArtworkLoader
     private let itemsFromEndThreshold = 12
-    private var totalArtworks: Int = 0
+    internal var totalArtworks: Int = 0
     private var page = 0
     private var artworkSet: Set<Artwork> = Set()
     
