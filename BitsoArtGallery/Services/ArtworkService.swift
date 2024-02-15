@@ -9,12 +9,13 @@ import Foundation
 
 protocol ArtworkLoader {
     func fetchArtworks(page: Int) async throws -> ArtworkList
-    func fetchArtworkDetail(withId: Int) async throws -> ArtworkDetailResponse?
+    func fetchArtworkDetail(withId: Int) async throws -> ArtworkDetailResponse
 }
 
-enum ArtworkLoaderError: Error {
-    case couldNotLoadArtworks
-    case couldNotLoadArtwork
+enum ArtworkLoaderError: String, Error {
+    case invalidUrl = "This artwork created an invalid request. Please try again"
+    case offlineAndNotCached = "It seems you are offline and we couldn't fetch more artworks. Please try again"
+    case couldNotLoadArtwork = "Could not load this artwork. Please try again"
 }
 
 class ArtworkService: ArtworkLoader {
@@ -28,7 +29,7 @@ class ArtworkService: ArtworkLoader {
     
     func fetchArtworks(page: Int) async throws -> ArtworkList {
         guard let url = APIs.Artic.getArtworks(page: page).url else {
-            throw NetworkError.invalidUrlError
+            throw ArtworkLoaderError.invalidUrl
         }
         
         let resource = Resource.init(request: URLRequest(url: url), responseType: ArtworkList.self)
@@ -46,7 +47,7 @@ class ArtworkService: ArtworkLoader {
         }
     }
     
-    func fetchArtworkDetail(withId id: Int) async throws -> ArtworkDetailResponse? {
+    func fetchArtworkDetail(withId id: Int) async throws -> ArtworkDetailResponse {
         guard let url = APIs.Artic.getArtwork(id: id).url else {
             throw NetworkError.invalidUrlError
         }
@@ -61,7 +62,7 @@ class ArtworkService: ArtworkLoader {
         } catch {
             guard let error = error as? NetworkError, error == .notConnectedToInternet else { throw error }
             
-            // User is offline, attempt to fetch page from files
+            // User is offline, attempt to fetch artwork from files
             return try fetchArtworkDetailFromFiles(artworkId: id)
         }
     }
@@ -76,10 +77,13 @@ class ArtworkService: ArtworkLoader {
     }
     
     private func fetchArtworksFromFiles(page: Int) throws -> ArtworkList {
+        do {
             return try fileManager.decode(ArtworkList.self, from: artworkListFileName(page: page))
+        } catch {
+            guard let error = error as? FileManagerError, error == .fileNotFound else { throw error }
+            throw ArtworkLoaderError.offlineAndNotCached
+        }
     }
-    
-    
     
     private func fetchArtworkDetailFromFiles(artworkId: Int) throws -> ArtworkDetailResponse {
         do {
@@ -99,6 +103,7 @@ class ArtworkService: ArtworkLoader {
                 try fileManager.encode(input, to: fileName)
             }
             catch {
+                //
                 print(error)
             }
         }

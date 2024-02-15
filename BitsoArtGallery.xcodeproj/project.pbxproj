@@ -32,6 +32,7 @@
 		2C327D542B75660B00F1F2B0 /* ArtworkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C327D532B75660B00F1F2B0 /* ArtworkListViewModel.swift */; };
 		2C9926162B7D43A30066CE80 /* ErrorSnackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9926152B7D43A30066CE80 /* ErrorSnackbar.swift */; };
 		2C9926192B7D4B350066CE80 /* ArtworkServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9926182B7D4B340066CE80 /* ArtworkServiceTest.swift */; };
+		2C99261F2B7D8CBD0066CE80 /* ErrorHandlingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99261E2B7D8CBD0066CE80 /* ErrorHandlingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		2C327D532B75660B00F1F2B0 /* ArtworkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkListViewModel.swift; sourceTree = "<group>"; };
 		2C9926152B7D43A30066CE80 /* ErrorSnackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSnackbar.swift; sourceTree = "<group>"; };
 		2C9926182B7D4B340066CE80 /* ArtworkServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkServiceTest.swift; sourceTree = "<group>"; };
+		2C99261E2B7D8CBD0066CE80 /* ErrorHandlingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 				2C327D532B75660B00F1F2B0 /* ArtworkListViewModel.swift */,
 				2C0DBF1B2B7BC46F00562658 /* ArtworkDetailViewModel.swift */,
 				2C0DBF1D2B7BE27900562658 /* ViewModelFactory.swift */,
+				2C99261E2B7D8CBD0066CE80 /* ErrorHandlingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				2C0DBF0B2B76A83500562658 /* NetworkError.swift in Sources */,
 				2C327D4E2B755CFE00F1F2B0 /* ArtworkCard.swift in Sources */,
 				2C327D1E2B752D5700F1F2B0 /* BitsoArtGalleryApp.swift in Sources */,
+				2C99261F2B7D8CBD0066CE80 /* ErrorHandlingViewModel.swift in Sources */,
 				2C0DBF182B76C27B00562658 /* AsyncCachableImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

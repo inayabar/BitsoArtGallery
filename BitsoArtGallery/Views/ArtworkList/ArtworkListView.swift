@@ -40,7 +40,7 @@ struct ArtworkListView: View {
                     }
                 }
                 
-                ErrorSnackbar(errorMessage: "Oh no! Could not load more artworks", isShowing: $viewModel.isShowingError, dismissAfter: 3.0)
+                ErrorSnackbar(errorMessage: viewModel.errorMessage, isShowing: $viewModel.isShowingError, dismissAfter: 8.0)
             }
             .navigationTitle("Artworks")
         }
@@ -71,5 +71,12 @@ struct ArtworkListView: View {
 
 #Preview {
     let viewModel = ArtworkListViewModel(artworkLoader: ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default))
+    return ArtworkListView(viewModel: viewModel).environmentObject(ViewModelFactory())
+}
+
+
+#Preview {
+    let viewModel = ArtworkListViewModel(artworkLoader: ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default))
+    viewModel.isShowingError = true
     return ArtworkListView(viewModel: viewModel).environmentObject(ViewModelFactory())
 }

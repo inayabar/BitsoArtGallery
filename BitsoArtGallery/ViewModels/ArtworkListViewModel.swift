@@ -23,6 +23,7 @@ class ArtworkListViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var pagingState: PagingState = .idle
     @Published var isShowingError: Bool = false
+    @Published var errorMessage = ""
     
     init(artworkLoader: ArtworkLoader) {
         self.artworkLoader = artworkLoader
@@ -53,10 +54,15 @@ class ArtworkListViewModel: ObservableObject {
             self.artworks += response.data
             self.totalArtworks = response.pagination.total
             self.pagingState = .idle
+            self.isShowingError = false
         } catch {
             self.isShowingError = true
+            if let error = error as? ArtworkLoaderError {
+                self.errorMessage = error.rawValue
+            } else {
+                self.errorMessage = "Oh no! Could not load more artworks. Please try again later"
+            }
         }
-        
     }
     
     private func scrollingThresholdMet(at index: Int) -> Bool {

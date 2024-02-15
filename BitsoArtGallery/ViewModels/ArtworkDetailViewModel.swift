@@ -8,11 +8,13 @@
 import Foundation
 
 @MainActor
-class ArtworkDetailViewModel: ObservableObject {
+class ArtworkDetailViewModel: ObservableObject, ErrorHandlingViewModel {
     private let artworkLoader: ArtworkLoader
     private var artworkId: Int
     
     @Published var artwork: ArtworkDetail? = nil
+    @Published var isShowingError: Bool = false
+    @Published var errorMessage = ""
     
     init(artworkLoader: ArtworkLoader, artworkId: Int) {
         self.artworkLoader = artworkLoader
@@ -20,8 +22,18 @@ class ArtworkDetailViewModel: ObservableObject {
     }
     
     func loadArtwork() async throws {
-        let response = try await self.artworkLoader.fetchArtworkDetail(withId: artworkId)
-        self.artwork = response?.data
+        do {
+            let response = try await self.artworkLoader.fetchArtworkDetail(withId: artworkId)
+            self.artwork = response.data
+            self.isShowingError = false
+        } catch {
+            self.isShowingError = true
+            if let error = error as? ArtworkLoaderError {
+                self.errorMessage = error.rawValue
+            } else {
+                self.errorMessage = "Oh no! Could not load this artwork. Please try again later"
+            }
+        }
     }
     
     func getImageURL() -> URL? {
