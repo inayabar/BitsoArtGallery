@@ -12,10 +12,11 @@ struct ArtworkCard: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            if let imageId = artwork.imageId, let imageUrl = APIs.Artic.getImage(id: imageId).url{
+            if let imageId = artwork.imageId, let imageUrl = APIs.Artic.getImage(id: imageId).url {
                 AsyncCachableImage(url: imageUrl, placeholder: "ArtworkPlaceholder")
-                    .frame(width: 120, height: 120)
+                    .frame(width: 120, height: 120, alignment: .top)
                     .aspectRatio(contentMode: .fit)
+                    .padding(.bottom)
             } else {
                 Image("ArtworkPlaceholder")
                     .resizable()
@@ -35,7 +36,7 @@ struct ArtworkCard: View {
 }
 
 #Preview {
-    ArtworkCard(artwork: Artwork(id: 123, title: "Starry night and the astronauts", artistTitle: "Alma Thomas", departmentTitle: "Contemporary art", imageId: "e966799b-97ee-1cc6-bd2f-a94b4b8bb8f9"))
+    ArtworkCard(artwork: Artwork(id: 123, title: "Starry night and the astronauts", artistTitle: "Alma Thomas", departmentTitle: "Contemporary art", imageId: "5b23cb0f-ea53-81ac-0eda-ba07833fddd1"))
 }
 
 #Preview {

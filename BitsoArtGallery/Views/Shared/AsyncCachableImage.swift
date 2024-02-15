@@ -42,10 +42,8 @@ struct AsyncCachableImage: View {
         switch phase {
         case .loading:
             ProgressView()
-                .onAppear {
-                    Task {
-                        await loadImage()
-                    }
+                .task {
+                    await loadImage()
                 }
         case .failed:
             Image(placeholder)

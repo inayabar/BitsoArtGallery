@@ -27,35 +27,24 @@ struct ArtworkDetailView: View {
                                 .frame(maxWidth: .infinity)
                         }
                         
-                        VStack(alignment: .leading, spacing: 10) {
+                        VStack(spacing: 8) {
                             Text(artwork.title)
-                                .font(.title)
+                                .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.primary)
+                                .frame(maxWidth: .infinity)
+                                .multilineTextAlignment(.center)
                             
-                            Text("Artist: \(artwork.artistDisplay)")
-                                .foregroundColor(.secondary)
-                            
-                            Text("Date: \(artwork.dateDisplay)")
-                                .foregroundColor(.secondary)
-                            
-                            Text("Medium: \(artwork.mediumDisplay)")
-                                .foregroundColor(.secondary)
-                            
-                            Text("Dimensions: \(artwork.dimensions)")
+                            Text(artwork.artistDisplay)
                                 .foregroundColor(.secondary)
                         }
-                        .padding(.horizontal)
                         
                         if let description = artwork.description {
                             Divider()
                                 .padding(.horizontal)
                             
-                            Text("Description:")
-                                .font(.headline)
-                                .padding(.horizontal)
-                            
                             Text(description)
+                                .font(.system(size: 16))
                                 .padding(.horizontal)
                                 .allowsTightening(true)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -68,7 +57,7 @@ struct ArtworkDetailView: View {
                             ArtworkAdditionalInfoView(artwork: artwork)
                         } label: {
                             HStack {
-                                Text("Additional Info")
+                                Text("Additional Details")
                                     .font(.headline)
                                 
                                 Spacer()
