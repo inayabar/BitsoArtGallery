@@ -6,7 +6,14 @@
 //
 
 import Foundation
-extension FileManager {
+
+protocol FileManaging {
+    func encode<T: Encodable>(_ input: T, to file: String) throws
+    func decode<T: Decodable>(_ type: T.Type, from file: String) throws -> T
+    func getData(for key: String) throws -> Data
+}
+
+extension FileManager: FileManaging {
     private func getDocumentsDirectory() -> URL {
         let paths = self.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
@@ -21,11 +28,7 @@ extension FileManager {
         try data.write(to: url, options: [.atomic, .completeFileProtection])
     }
     
-    func decode<T: Decodable>(_ type: T.Type,
-                              from file: String,
-                              dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
-                              keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys
-    )  throws -> T {
+    func decode<T: Decodable>(_ type: T.Type, from file: String)  throws -> T {
         let url = getDocumentsDirectory().appendingPathComponent(file)
         
         guard self.fileExists(atPath: url.path) else {
@@ -33,8 +36,8 @@ extension FileManager {
         }
         
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = dateDecodingStrategy
-        decoder.keyDecodingStrategy = keyDecodingStrategy
+        decoder.dateDecodingStrategy = .deferredToDate
+        decoder.keyDecodingStrategy = .useDefaultKeys
         
         let data = try Data(contentsOf: url)
         let loaded = try decoder.decode(T.self, from: data)

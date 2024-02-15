@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol NetworkServicing {
+protocol NetworkResourceLoader {
     func load<T>(resource: Resource<T>) async throws -> T
 }
 
-class NetworkService: NetworkServicing {
+class NetworkService: NetworkResourceLoader {
     private let session: URLSession
     private let decoder: JSONDecoder
     

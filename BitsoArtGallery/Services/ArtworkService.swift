@@ -19,10 +19,10 @@ enum ArtworkLoaderError: String, Error {
 }
 
 class ArtworkService: ArtworkLoader {
-    let networkingService: NetworkService
-    let fileManager: FileManager
+    let networkingService: NetworkResourceLoader
+    let fileManager: FileManaging
     
-    init(networkingService: NetworkService, fileManager: FileManager) {
+    init(networkingService: NetworkResourceLoader, fileManager: FileManaging) {
         self.networkingService = networkingService
         self.fileManager = fileManager
     }
