@@ -10,8 +10,14 @@ import SwiftUI
 
 class ImageCache {
     static let shared = ImageCache()
+    private let fileManager: FileManager
+    private let cache: NSCache<NSString, UIImage>
     
-    private let cache = NSCache<NSString, UIImage>()
+    init(fileManager: FileManager = .default,
+         cache: NSCache<NSString, UIImage> = .init()) {
+        self.fileManager = fileManager
+        self.cache = cache
+    }
     
     func getImage(forKey key: String) -> UIImage? {
         if let cachedImage = cache.object(forKey: NSString(string: key)) {
