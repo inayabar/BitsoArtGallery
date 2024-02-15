@@ -43,4 +43,28 @@ class ArtworkDetailViewModel: ObservableObject, ErrorHandlingViewModel {
         
          return APIs.Artic.getImage(id: id).url
     }
+    
+    /*  SwiftUI's Text view does not support attributed strings.
+        It is possible to use UITextView via UIViewRepresentable,
+        but for the scope of this exercise I decided to clear the html tags from the description
+     */
+    func getDescription() -> String? {
+        guard let description = artwork?.description else {
+            return nil
+        }
+        
+        let htmlPattern = "<[^>]+>"
+        
+        do {
+            let regex = try NSRegularExpression(pattern: htmlPattern, options: .caseInsensitive)
+            
+            // Remove HTML tags from the input string
+            let range = NSRange(location: 0, length: description.utf16.count)
+            let cleanString = regex.stringByReplacingMatches(in: description, options: [], range: range, withTemplate: "")
+            
+            return cleanString
+        } catch {
+            return artwork?.description
+        }
+    }
 }

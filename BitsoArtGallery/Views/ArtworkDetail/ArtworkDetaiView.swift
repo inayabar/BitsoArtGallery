@@ -39,7 +39,7 @@ struct ArtworkDetailView: View {
                                 .foregroundColor(.secondary)
                         }
                         
-                        if let description = artwork.description {
+                        if let description = viewModel.getDescription() {
                             Divider()
                                 .padding(.horizontal)
                             
@@ -56,19 +56,13 @@ struct ArtworkDetailView: View {
                         DisclosureGroup(isExpanded: $showAdditionalInfo) {
                             ArtworkAdditionalInfoView(artwork: artwork)
                         } label: {
-                            HStack {
-                                Text("Additional Details")
-                                    .font(.headline)
-                                
-                                Spacer()
-                                
-                                Image(systemName: showAdditionalInfo ? "chevron.up" : "chevron.down")
-                                    .foregroundColor(.blue)
-                            }
-                            .padding(.horizontal)
+                            Text("Additional Details")
+                                .font(.headline)
                         }
+                        .padding(.horizontal)
                     }
                     .foregroundColor(.primary)
+                    .padding(.horizontal)
                 } else {
                     ProgressView()
                 }
