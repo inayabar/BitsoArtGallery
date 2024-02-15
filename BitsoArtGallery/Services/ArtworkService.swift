@@ -9,7 +9,7 @@ import Foundation
 
 protocol ArtworkLoader {
     func fetchArtworks(page: Int) async throws -> ArtworkList
-    func fetchArtworkDetail(withId: Int) async throws -> ArtworkDetailResponse?
+    func fetchArtworkDetail(withId: Int) async throws -> ArtworkDetailResponse
 }
 
 enum ArtworkLoaderError: String, Error {
@@ -47,7 +47,7 @@ class ArtworkService: ArtworkLoader {
         }
     }
     
-    func fetchArtworkDetail(withId id: Int) async throws -> ArtworkDetailResponse? {
+    func fetchArtworkDetail(withId id: Int) async throws -> ArtworkDetailResponse {
         guard let url = APIs.Artic.getArtwork(id: id).url else {
             throw NetworkError.invalidUrlError
         }

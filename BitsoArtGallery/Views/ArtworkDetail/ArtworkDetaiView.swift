@@ -12,81 +12,81 @@ struct ArtworkDetailView: View {
     @State private var showAdditionalInfo = false
     
     var body: some View {
-        ScrollView {
-            if let artwork = viewModel.artwork {
-                VStack(alignment: .leading, spacing: 20) {
-                    if let imageUrl = viewModel.getImageURL() {
-                        AsyncCachableImage(url: imageUrl, placeholder: "ArtworkPlaceholder")
-                            .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: .infinity, maxHeight: 400)
-                    } else {
-                        Image("ArtworkPlaceholder")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: .infinity)
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(artwork.title)
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(.primary)
+        ZStack {
+            ScrollView {
+                if let artwork = viewModel.artwork {
+                    VStack(alignment: .leading, spacing: 20) {
+                        if let imageUrl = viewModel.getImageURL() {
+                            AsyncCachableImage(url: imageUrl, placeholder: "ArtworkPlaceholder")
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: .infinity, maxHeight: 400)
+                        } else {
+                            Image("ArtworkPlaceholder")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: .infinity)
+                        }
                         
-                        Text("Artist: \(artwork.artistDisplay)")
-                            .foregroundColor(.secondary)
-                        
-                        Text("Date: \(artwork.dateDisplay)")
-                            .foregroundColor(.secondary)
-                        
-                        Text("Medium: \(artwork.mediumDisplay)")
-                            .foregroundColor(.secondary)
-                        
-                        Text("Dimensions: \(artwork.dimensions)")
-                            .foregroundColor(.secondary)
-                    }
-                    .padding(.horizontal)
-                    
-                    Divider()
-                        .padding(.horizontal)
-                    
-                    if let description = artwork.description {
-                        Text("Description:")
-                            .font(.headline)
-                            .padding(.horizontal)
-                        
-                        Text(description)
-                            .padding(.horizontal)
-                            .allowsTightening(true)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                    
-                    if let inscriptions = artwork.inscriptions {
-                        Text("Inscriptions: \(inscriptions)")
-                            .padding(.horizontal)
-                    }
-                    
-                    Divider()
-                        .padding(.horizontal)
-                    
-                    DisclosureGroup(isExpanded: $showAdditionalInfo) {
-                        ArtworkAdditionalInfoView(artwork: artwork)
-                    } label: {
-                        HStack {
-                            Text("Additional Info")
-                                .font(.headline)
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(artwork.title)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(.primary)
                             
-                            Spacer()
+                            Text("Artist: \(artwork.artistDisplay)")
+                                .foregroundColor(.secondary)
                             
-                            Image(systemName: showAdditionalInfo ? "chevron.up" : "chevron.down")
-                                .foregroundColor(.blue)
+                            Text("Date: \(artwork.dateDisplay)")
+                                .foregroundColor(.secondary)
+                            
+                            Text("Medium: \(artwork.mediumDisplay)")
+                                .foregroundColor(.secondary)
+                            
+                            Text("Dimensions: \(artwork.dimensions)")
+                                .foregroundColor(.secondary)
                         }
                         .padding(.horizontal)
+                        
+                        if let description = artwork.description {
+                            Divider()
+                                .padding(.horizontal)
+                            
+                            Text("Description:")
+                                .font(.headline)
+                                .padding(.horizontal)
+                            
+                            Text(description)
+                                .padding(.horizontal)
+                                .allowsTightening(true)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+
+                        Divider()
+                            .padding(.horizontal)
+                        
+                        DisclosureGroup(isExpanded: $showAdditionalInfo) {
+                            ArtworkAdditionalInfoView(artwork: artwork)
+                        } label: {
+                            HStack {
+                                Text("Additional Info")
+                                    .font(.headline)
+                                
+                                Spacer()
+                                
+                                Image(systemName: showAdditionalInfo ? "chevron.up" : "chevron.down")
+                                    .foregroundColor(.blue)
+                            }
+                            .padding(.horizontal)
+                        }
                     }
+                    .foregroundColor(.primary)
+                } else {
+                    ProgressView()
                 }
-                .foregroundColor(.primary)
-            } else {
-                ProgressView()
             }
+            
+            ErrorSnackbar(errorMessage: viewModel.errorMessage, isShowing: $viewModel.isShowingError, dismissAfter: 8.0)
+            
         }
         .onAppear {
             Task {
@@ -98,4 +98,9 @@ struct ArtworkDetailView: View {
 
 #Preview {
     ArtworkDetailView(viewModel: ArtworkDetailViewModel(artworkLoader: ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default), artworkId: 191183))
+}
+
+#Preview {
+    let viewModel = ArtworkDetailViewModel(artworkLoader: ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default), artworkId: 123)
+    return ArtworkDetailView(viewModel: viewModel)
 }
