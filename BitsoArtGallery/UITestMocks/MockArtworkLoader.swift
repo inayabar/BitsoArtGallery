@@ -21,6 +21,17 @@ class MockArtworkLoader: ArtworkLoader {
     }
     
     func fetchArtworkDetail(withId: Int) async throws -> ArtworkDetailResponse {
-        throw ArtworkLoaderError.couldNotLoadArtwork
+        return ArtworkDetailResponse(data: ArtworkDetail(id: 1,
+                                                         title: "Artwork 1",
+                                                         artistDisplay: "John Doe",
+                                                         dateDisplay: "2022",
+                                                         mediumDisplay: "Oil on canvas",
+                                                         dimensions: "50 x 50 cm",
+                                                         description: "This is a beautiful artwork created by John Doe.",
+                                                         imageId: "image_123",
+                                                         inscriptions: "Signed by the artist.",
+                                                         creditLine: "Gift of John Doe",
+                                                         galleryTitle: "Gallery 1",
+                                                         departmentTitle: "Modern Art"))
     }
 }

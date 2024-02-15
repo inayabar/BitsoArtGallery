@@ -22,7 +22,6 @@ final class BitsoArtGalleryUITests: XCTestCase {
     }
 
     func testCardsAreShown() throws {
-        
         // Assert all cards are shown
         MockArtworkLoader.artworks.forEach({ artwork in
             let titleLabel = app.staticTexts[artwork.title]
@@ -33,8 +32,18 @@ final class BitsoArtGalleryUITests: XCTestCase {
                 XCTAssertEqual(artistLabel.label, artistTitle)
             }
         })
+    }
+    
+    @MainActor
+    func testNavigationToDetail() async throws {
+        let artworkDetail = try! await MockArtworkLoader().fetchArtworkDetail(withId: 1)
+        XCTAssert(app.staticTexts["Artworks"].exists)
         
-        // Assert cards with image 
+        let firstCardLabel = app.staticTexts[MockArtworkLoader.artworks.first!.title]
+        firstCardLabel.tap()
+        
+        XCTAssert(app.staticTexts[artworkDetail.data.description!].exists)
+        XCTAssert(app.staticTexts["Additional Details"].exists)
     }
 
     func testLaunchPerformance() throws {
