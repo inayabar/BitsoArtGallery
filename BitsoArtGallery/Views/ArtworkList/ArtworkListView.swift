@@ -25,13 +25,10 @@ struct ArtworkListView: View {
                                         await viewModel.requestMoreItemsIfNeeded(for: index)
                                     }
                                 }
-                                .buttonStyle(.plain)
-                                .listRowSeparator(.hidden)
                         }
                     }
                     lastRowView
                 }
-                .listRowSeparator(.hidden)
                 .listStyle(.plain)
                 .padding()
                 .refreshable {

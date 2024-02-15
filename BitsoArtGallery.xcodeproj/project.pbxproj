@@ -33,6 +33,7 @@
 		2C9926162B7D43A30066CE80 /* ErrorSnackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9926152B7D43A30066CE80 /* ErrorSnackbar.swift */; };
 		2C9926192B7D4B350066CE80 /* ArtworkServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9926182B7D4B340066CE80 /* ArtworkServiceTest.swift */; };
 		2C99261F2B7D8CBD0066CE80 /* ErrorHandlingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99261E2B7D8CBD0066CE80 /* ErrorHandlingViewModel.swift */; };
+		2C9926212B7DB8C90066CE80 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C9926202B7DB8C90066CE80 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		2C9926152B7D43A30066CE80 /* ErrorSnackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSnackbar.swift; sourceTree = "<group>"; };
 		2C9926182B7D4B340066CE80 /* ArtworkServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkServiceTest.swift; sourceTree = "<group>"; };
 		2C99261E2B7D8CBD0066CE80 /* ErrorHandlingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlingViewModel.swift; sourceTree = "<group>"; };
+		2C9926202B7DB8C90066CE80 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 				2C0DBF242B7C709E00562658 /* ArtworkList */,
 				2C0DBF232B7C708800562658 /* ArtworkDetail */,
 				2C0DBF162B76C26B00562658 /* Shared */,
+				2C9926202B7DB8C90066CE80 /* Launch Screen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C9926212B7DB8C90066CE80 /* Launch Screen.storyboard in Resources */,
 				2C327D252B752D5900F1F2B0 /* Preview Assets.xcassets in Resources */,
 				2C327D222B752D5900F1F2B0 /* Assets.xcassets in Resources */,
 			);
@@ -584,6 +588,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -617,6 +622,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
