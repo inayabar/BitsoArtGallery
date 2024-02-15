@@ -7,7 +7,7 @@
 
 import Foundation
 class MockFileManager: FileManaging {
-    let response: Any? = nil
+    var response: Any? = nil
     var writtenData: [String: Any] = [:]
     var readingError: FileManagerError? = nil
     var writingError: FileManagerError? = nil

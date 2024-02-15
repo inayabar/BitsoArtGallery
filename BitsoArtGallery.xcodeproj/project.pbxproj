@@ -60,6 +60,9 @@
 		2CED81472B7E763F002B5FE4 /* ArtworkDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CED81462B7E763F002B5FE4 /* ArtworkDetailViewModelTests.swift */; };
 		2CED81492B7E7AA3002B5FE4 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CED81482B7E7AA3002B5FE4 /* MockNetworkService.swift */; };
 		2CED814B2B7E7E91002B5FE4 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CED814A2B7E7E90002B5FE4 /* MockFileManager.swift */; };
+		2CED814D2B7E96D7002B5FE4 /* DispatchQueue+Bitso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CED814C2B7E96D7002B5FE4 /* DispatchQueue+Bitso.swift */; };
+		2CED814F2B7E9845002B5FE4 /* MockDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CED814E2B7E9845002B5FE4 /* MockDispatchQueue.swift */; };
+		2CED81502B7E9861002B5FE4 /* DispatchQueue+Bitso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CED814C2B7E96D7002B5FE4 /* DispatchQueue+Bitso.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +119,8 @@
 		2CED81462B7E763F002B5FE4 /* ArtworkDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkDetailViewModelTests.swift; sourceTree = "<group>"; };
 		2CED81482B7E7AA3002B5FE4 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		2CED814A2B7E7E90002B5FE4 /* MockFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFileManager.swift; sourceTree = "<group>"; };
+		2CED814C2B7E96D7002B5FE4 /* DispatchQueue+Bitso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Bitso.swift"; sourceTree = "<group>"; };
+		2CED814E2B7E9845002B5FE4 /* MockDispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDispatchQueue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +322,7 @@
 				2CED81422B7E6D7C002B5FE4 /* MockArtworks.swift */,
 				2CED81482B7E7AA3002B5FE4 /* MockNetworkService.swift */,
 				2CED814A2B7E7E90002B5FE4 /* MockFileManager.swift */,
+				2CED814E2B7E9845002B5FE4 /* MockDispatchQueue.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				2C0F46482B7D1DA70047732E /* FileManager+Bitso.swift */,
+				2CED814C2B7E96D7002B5FE4 /* DispatchQueue+Bitso.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -466,6 +473,7 @@
 				2C0DBF1A2B7BAE5700562658 /* ArtworkDetaiView.swift in Sources */,
 				2C0DBF1E2B7BE27900562658 /* ViewModelFactory.swift in Sources */,
 				2C0DBF082B768CC300562658 /* ArtworkList.swift in Sources */,
+				2CED814D2B7E96D7002B5FE4 /* DispatchQueue+Bitso.swift in Sources */,
 				2C0DBF1C2B7BC47000562658 /* ArtworkDetailViewModel.swift in Sources */,
 				2C0DBF0F2B76B84100562658 /* Resource.swift in Sources */,
 				2C0F46492B7D1DA70047732E /* FileManager+Bitso.swift in Sources */,
@@ -499,6 +507,7 @@
 				2CED812E2B7E6BE1002B5FE4 /* ViewModelFactory.swift in Sources */,
 				2CED81382B7E6C01002B5FE4 /* ArtworkCard.swift in Sources */,
 				2CED81342B7E6BF6002B5FE4 /* NetworkService.swift in Sources */,
+				2CED814F2B7E9845002B5FE4 /* MockDispatchQueue.swift in Sources */,
 				2CED812B2B7E6BD1002B5FE4 /* ArtworkList.swift in Sources */,
 				2CED812C2B7E6BD7002B5FE4 /* ArtworkDetail.swift in Sources */,
 				2CED81412B7E6C69002B5FE4 /* Artwork.swift in Sources */,
@@ -511,6 +520,7 @@
 				2CED813F2B7E6C0D002B5FE4 /* ErrorSnackbar.swift in Sources */,
 				2CED813D2B7E6C07002B5FE4 /* ArtworkDetaiView.swift in Sources */,
 				2CED81262B7E6AE3002B5FE4 /* ArtworkListViewModel.swift in Sources */,
+				2CED81502B7E9861002B5FE4 /* DispatchQueue+Bitso.swift in Sources */,
 				2CED81352B7E6BF8002B5FE4 /* APIs.swift in Sources */,
 				2CED81492B7E7AA3002B5FE4 /* MockNetworkService.swift in Sources */,
 				2CED812A2B7E6B34002B5FE4 /* MockArtworkLoader.swift in Sources */,

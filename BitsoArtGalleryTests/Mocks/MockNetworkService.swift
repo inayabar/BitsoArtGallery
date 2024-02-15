@@ -21,3 +21,9 @@ class MockNetworkService: NetworkResourceLoader {
         return mockData
     }
 }
+
+class OfflineNetworkService: NetworkResourceLoader {
+    func load<T>(resource: Resource<T>) async throws -> T where T : Decodable {
+        throw NetworkError.notConnectedToInternet
+    }
+}
