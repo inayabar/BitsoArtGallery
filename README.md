@@ -41,7 +41,6 @@ The Chicago Art Institute API utilized to fetch artworks data consists of two ma
 
 This approach has the tradeoff that for offline navigation, the second api call is only triggered when entering the detail screen, which means the possibility exists that we saved the list response containing a specific artwork, but when we navigate to the detail the api call fails due to no internet connection, and we cannot show detailed information. In hindsight, it would be better to fetch all the data in the first api call.
 
-
 ## Instructions
 
 ### Running the Project
@@ -71,5 +70,10 @@ Steps:
 - Select "Test" or use the shortcut (⌘U) to run the test suite.
 
 
+## Screenshots
+| Light Mode | Dark Mode |
+|------------|-----------|
+| <img src="https://github.com/inayabar/BitsoArtGallery/assets/21232834/4cc37462-2fc5-425b-adb9-0d9e6c144885" width="300" height="650"> | <img src="https://github.com/inayabar/BitsoArtGallery/assets/21232834/a5ce09e4-e571-4487-aeec-d7cccf67f2c2" width="300" height="650"> |
+| <img src="https://github.com/inayabar/BitsoArtGallery/assets/21232834/7704ca59-e8fa-415b-9c4e-d8c699048e83" width="300" height="650"> | <img src="https://github.com/inayabar/BitsoArtGallery/assets/21232834/1258f111-139f-4cee-a68c-ffacca6f1f98" width="300" height="650"> |
 
 
