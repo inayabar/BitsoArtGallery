@@ -14,7 +14,6 @@ struct ArtworkDetailView: View {
     var body: some View {
         ZStack {
             ScrollView {
-                if let artwork = viewModel.artwork {
                     VStack(alignment: .leading, spacing: 20) {
                         if let imageUrl = viewModel.getImageURL() {
                             AsyncCachableImage(url: imageUrl, placeholder: "ArtworkPlaceholder")
@@ -28,15 +27,19 @@ struct ArtworkDetailView: View {
                         }
                         
                         VStack(spacing: 8) {
-                            Text(artwork.title)
+                            Text(viewModel.artwork.title)
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.primary)
                                 .frame(maxWidth: .infinity)
                                 .multilineTextAlignment(.center)
                             
-                            Text(artwork.artistDisplay)
-                                .foregroundColor(.secondary)
+                            if let artistTitle = viewModel.getArtistTitle() {
+                                Text(artistTitle)
+                                    .foregroundColor(.secondary)
+                            } else {
+                                SkeletonRectangle()
+                            }
                         }
                         
                         if let description = viewModel.getDescription() {
@@ -48,24 +51,27 @@ struct ArtworkDetailView: View {
                                 .padding(.horizontal)
                                 .allowsTightening(true)
                                 .fixedSize(horizontal: false, vertical: true)
+                        } else {
+                            SkeletonRectangle()
                         }
 
                         Divider()
                             .padding(.horizontal)
                         
-                        DisclosureGroup(isExpanded: $showAdditionalInfo) {
-                            ArtworkAdditionalInfoView(artwork: artwork)
-                        } label: {
-                            Text("Additional Details")
-                                .font(.headline)
+                        if let artworkDetail = viewModel.artworkDetail {
+                            DisclosureGroup(isExpanded: $showAdditionalInfo) {
+                                ArtworkAdditionalInfoView(artwork: artworkDetail)
+                            } label: {
+                                Text("Additional Details")
+                                    .font(.headline)
+                            }
+                            .padding(.horizontal)
+                        } else {
+                            SkeletonRectangle()
                         }
-                        .padding(.horizontal)
                     }
                     .foregroundColor(.primary)
                     .padding(.horizontal)
-                } else {
-                    ProgressView()
-                }
             }
             
             ErrorSnackbar(errorMessage: viewModel.errorMessage, isShowing: $viewModel.isShowingError, dismissAfter: 8.0)
@@ -73,17 +79,12 @@ struct ArtworkDetailView: View {
         }
         .onAppear {
             Task {
-                try! await viewModel.loadArtwork()
+                await viewModel.loadArtwork()
             }
         }
     }
 }
 
 #Preview {
-    ArtworkDetailView(viewModel: ArtworkDetailViewModel(artworkLoader: ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default), artworkId: 191183))
-}
-
-#Preview {
-    let viewModel = ArtworkDetailViewModel(artworkLoader: ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default), artworkId: 123)
-    return ArtworkDetailView(viewModel: viewModel)
+    ArtworkDetailView(viewModel: ArtworkDetailViewModel(artworkLoader: ArtworkService(networkingService: NetworkService(), fileManager: FileManager.default), artwork: Artwork(id: 191183, title: "An amazing artwork", artistTitle: "John Doe", departmentTitle: "Contemporary", imageId: "c6da9f8c-643b-f331-0f8f-a9b6a844caf6")))
 }

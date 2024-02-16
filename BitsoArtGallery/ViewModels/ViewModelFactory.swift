@@ -23,7 +23,7 @@ class ViewModelFactory: ObservableObject {
     }
     
     @MainActor
-    func makeArtworkDetailViewModel(for id: Int) -> ArtworkDetailViewModel {
-        return ArtworkDetailViewModel(artworkLoader: artworkLoader, artworkId: id)
+    func makeArtworkDetailViewModel(for artwork: Artwork) -> ArtworkDetailViewModel {
+        return ArtworkDetailViewModel(artworkLoader: artworkLoader, artwork: artwork)
     }
 }

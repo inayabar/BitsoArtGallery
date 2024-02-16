@@ -15,7 +15,7 @@ final class ArtworkDetailViewModelTests: XCTestCase {
     func testLoadArtwork_whenServiceSucceeds_shouldRenderArtwork() async {
         
         let loader = MockArtworkLoader()
-        viewModel = ArtworkDetailViewModel(artworkLoader: loader, artworkId: 123)
+        viewModel = ArtworkDetailViewModel(artworkLoader: loader, artwork: MockArtworks.artworkWithImage)
         
         await viewModel.loadArtwork()
         
@@ -27,11 +27,11 @@ final class ArtworkDetailViewModelTests: XCTestCase {
     func testLoadArtwork_whenServiceFails_shouldRenderError() async {
         
         let loader = MockArtworkLoader()
-        viewModel = ArtworkDetailViewModel(artworkLoader: loader, artworkId: 1434343)
+        viewModel = ArtworkDetailViewModel(artworkLoader: loader, artwork: MockArtworks.artworkWithoutImage)
         
         await viewModel.loadArtwork()
         
-        XCTAssertNil(viewModel.artwork)
+        XCTAssertNil(viewModel.artworkDetail)
         XCTAssertTrue(viewModel.isShowingError)
     }
     
@@ -39,7 +39,7 @@ final class ArtworkDetailViewModelTests: XCTestCase {
     func testGetDescription_shouldRemoveHTMLFromDescription() {
         
         let loader = MockArtworkLoader()
-        viewModel = ArtworkDetailViewModel(artworkLoader: loader, artworkId: 1434343)
+        viewModel = ArtworkDetailViewModel(artworkLoader: loader, artwork: MockArtworks.artworkWithImage)
         
         let artworkDetail = ArtworkDetail(id: 123,
                                                          title: "Some art",
@@ -53,7 +53,7 @@ final class ArtworkDetailViewModelTests: XCTestCase {
                                                          creditLine: "Gift of John Doe",
                                                          galleryTitle: "Gallery 1",
                                                          departmentTitle: "Modern Art")
-        viewModel.artwork = artworkDetail
+        viewModel.artworkDetail = artworkDetail
         let result = viewModel.getDescription()
         
         XCTAssertNotNil(result)

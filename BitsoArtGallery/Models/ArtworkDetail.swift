@@ -13,7 +13,7 @@ struct ArtworkDetailResponse: Codable {
 struct ArtworkDetail: Codable {
     let id: Int
     let title: String
-    let artistDisplay: String
+    let artistDisplay: String?
     let dateDisplay: String
     let mediumDisplay: String
     let dimensions: String

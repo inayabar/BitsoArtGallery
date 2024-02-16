@@ -75,6 +75,9 @@
 		2CED815C2B7EA316002B5FE4 /* FileManager+Bitso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0F46482B7D1DA70047732E /* FileManager+Bitso.swift */; };
 		2CED815D2B7EA31A002B5FE4 /* DispatchQueue+Bitso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CED814C2B7E96D7002B5FE4 /* DispatchQueue+Bitso.swift */; };
 		2CED815E2B7EA324002B5FE4 /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0DBF142B76BDBE00562658 /* APIs.swift */; };
+		2CED81602B7FA444002B5FE4 /* SkeletonRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CED815F2B7FA444002B5FE4 /* SkeletonRectangle.swift */; };
+		2CED81612B7FA7D2002B5FE4 /* SkeletonRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CED815F2B7FA444002B5FE4 /* SkeletonRectangle.swift */; };
+		2CED81622B7FA7D3002B5FE4 /* SkeletonRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CED815F2B7FA444002B5FE4 /* SkeletonRectangle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +137,7 @@
 		2CED814C2B7E96D7002B5FE4 /* DispatchQueue+Bitso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Bitso.swift"; sourceTree = "<group>"; };
 		2CED814E2B7E9845002B5FE4 /* MockDispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDispatchQueue.swift; sourceTree = "<group>"; };
 		2CED81522B7E9D90002B5FE4 /* MockArtworkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockArtworkLoader.swift; sourceTree = "<group>"; };
+		2CED815F2B7FA444002B5FE4 /* SkeletonRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonRectangle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +186,7 @@
 			children = (
 				2C0DBF172B76C27B00562658 /* AsyncCachableImage.swift */,
 				2C9926152B7D43A30066CE80 /* ErrorSnackbar.swift */,
+				2CED815F2B7FA444002B5FE4 /* SkeletonRectangle.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -510,6 +515,7 @@
 				2C327D4E2B755CFE00F1F2B0 /* ArtworkCard.swift in Sources */,
 				2C327D1E2B752D5700F1F2B0 /* BitsoArtGalleryApp.swift in Sources */,
 				2C99261F2B7D8CBD0066CE80 /* ErrorHandlingViewModel.swift in Sources */,
+				2CED81602B7FA444002B5FE4 /* SkeletonRectangle.swift in Sources */,
 				2C0DBF182B76C27B00562658 /* AsyncCachableImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +534,7 @@
 				2CED814B2B7E7E91002B5FE4 /* MockFileManager.swift in Sources */,
 				2C9926192B7D4B350066CE80 /* ArtworkServiceTests.swift in Sources */,
 				2CED812E2B7E6BE1002B5FE4 /* ViewModelFactory.swift in Sources */,
+				2CED81612B7FA7D2002B5FE4 /* SkeletonRectangle.swift in Sources */,
 				2CED81382B7E6C01002B5FE4 /* ArtworkCard.swift in Sources */,
 				2CED81342B7E6BF6002B5FE4 /* NetworkService.swift in Sources */,
 				2CED814F2B7E9845002B5FE4 /* MockDispatchQueue.swift in Sources */,
@@ -564,6 +571,7 @@
 				2CED81592B7EA2F6002B5FE4 /* NetworkService.swift in Sources */,
 				2CED815E2B7EA324002B5FE4 /* APIs.swift in Sources */,
 				2CED81562B7EA2DE002B5FE4 /* ArtworkService.swift in Sources */,
+				2CED81622B7FA7D3002B5FE4 /* SkeletonRectangle.swift in Sources */,
 				2CED81542B7EA108002B5FE4 /* MockArtworkLoader.swift in Sources */,
 				2C327D392B752D5900F1F2B0 /* BitsoArtGalleryUITests.swift in Sources */,
 				2CED815B2B7EA30A002B5FE4 /* NetworkError.swift in Sources */,
