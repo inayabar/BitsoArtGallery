@@ -10,21 +10,21 @@ import Foundation
 @MainActor
 class ArtworkDetailViewModel: ObservableObject, ErrorHandlingViewModel {
     private let artworkLoader: ArtworkLoader
-    private var artworkId: Int
     
-    @Published var artwork: ArtworkDetail? = nil
+    @Published var artwork: Artwork
+    @Published var artworkDetail: ArtworkDetail? = nil
     @Published var isShowingError: Bool = false
     @Published var errorMessage = ""
     
-    init(artworkLoader: ArtworkLoader, artworkId: Int) {
+    init(artworkLoader: ArtworkLoader, artwork: Artwork) {
         self.artworkLoader = artworkLoader
-        self.artworkId = artworkId
+        self.artwork = artwork
     }
     
     func loadArtwork() async {
         do {
-            let response = try await self.artworkLoader.fetchArtworkDetail(withId: artworkId)
-            self.artwork = response.data
+            let response = try await self.artworkLoader.fetchArtworkDetail(withId: artwork.id)
+            self.artworkDetail = response.data
             self.isShowingError = false
         } catch {
             self.isShowingError = true
@@ -37,11 +37,19 @@ class ArtworkDetailViewModel: ObservableObject, ErrorHandlingViewModel {
     }
     
     func getImageURL() -> URL? {
-        guard let id = artwork?.imageId else {
+        guard let id = artwork.imageId else {
             return nil
         }
         
          return APIs.Artic.getImage(id: id).url
+    }
+    
+    func getArtistTitle() -> String? {
+        if let artworkDetail, let artistDisplay = artworkDetail.artistDisplay {
+            return artistDisplay
+        }
+        
+        return artwork.artistTitle
     }
     
     /*  SwiftUI's Text view does not support attributed strings.
@@ -49,8 +57,12 @@ class ArtworkDetailViewModel: ObservableObject, ErrorHandlingViewModel {
         but for the scope of this exercise I decided to clear the html tags from the description
      */
     func getDescription() -> String? {
-        guard let description = artwork?.description else {
+        guard let artworkDetail else {
             return nil
+        }
+        
+        guard let description = artworkDetail.description else {
+            return "No description available"
         }
         
         let htmlTagPattern = "<[^>]+>"
@@ -64,7 +76,7 @@ class ArtworkDetailViewModel: ObservableObject, ErrorHandlingViewModel {
             
             return cleanString
         } catch {
-            return artwork?.description
+            return artworkDetail.description
         }
     }
 }
