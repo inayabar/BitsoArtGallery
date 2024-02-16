@@ -44,14 +44,31 @@ This approach has the tradeoff that for offline navigation, the second api call 
 
 ## Instructions
 
-Provide instructions on how to run the project locally and how to run its test suite.
-
 ### Running the Project
 
-- Prerequisites:
+Requirements:
+- iOS 13+
+- Working Xcode 11+ installation
+
+Steps:
+1. **Clone the Repository:** ```git clone https://github.com/inayabar/BitsoArtGallery```
+2. **Open the Project:**
+- Navigate to the project directory.
+- Open the `.xcworkspace` file in Xcode.
+3. **Select a Simulator:**
+- Choose a simulator or connect a physical device with iOS 13 or later.
+
+4. **Build and Run:**
+- Press the play button (▶️) in Xcode to build and run the app on the selected device.
 
 ### Running the Test Suite
 
+1. **Select a Testing Scheme:**
+- Make sure the testing scheme is set to the app's target and not a specific file or class.
+
+2. **Run Tests:**
+- Navigate to the Product menu.
+- Select "Test" or use the shortcut (⌘U) to run the test suite.
 
 
 
