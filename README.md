@@ -52,8 +52,9 @@ Requirements:
 Steps:
 1. **Clone the Repository:** ```git clone https://github.com/inayabar/BitsoArtGallery```
 2. **Open the Project:**
+- Open Xcode and select 'Open Existing Project'
 - Navigate to the project directory.
-- Open the `.xcworkspace` file in Xcode.
+- Open the `.xcodeproj` file.
 3. **Select a Simulator:**
 - Choose a simulator or connect a physical device with iOS 13 or later.
 
